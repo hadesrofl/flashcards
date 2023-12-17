@@ -1,0 +1,19 @@
+import { PrismaClient } from "@prisma/client";
+
+export interface IRepository<T> {
+  create(entity: T): Promise<T>;
+  list(skip?: number, limit?: number): Promise<T[]>;
+  getById(id: number): Promise<T>;
+}
+
+export abstract class Repository<T> implements IRepository<T> {
+  protected dbContext: PrismaClient;
+
+  constructor(client: PrismaClient) {
+    this.dbContext = client;
+  }
+
+  abstract create(entity: T): Promise<T>;
+  abstract list(skip?: number, limit?: number): Promise<T[]>;
+  abstract getById(id: number): Promise<T>;
+}
