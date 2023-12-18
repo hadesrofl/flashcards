@@ -3,6 +3,9 @@
 import ApiRoutes from "@app/api/apiRoutes";
 import DeleteButton from "@components/DeleteButton";
 import { FlashCardWithTags } from "@customTypes/models/flashcard";
+import Edit from "@mui/icons-material/Edit";
+import ArrowCircleLeft from "@mui/icons-material/ArrowCircleLeft";
+import ArrowCircleRight from "@mui/icons-material/ArrowCircleRight";
 import {
   Box,
   Card,
@@ -12,28 +15,21 @@ import {
   Stack,
   Chip,
   Button,
+  IconButton,
 } from "@mui/material";
 import MDEditor from "@uiw/react-md-editor";
 import { useState } from "react";
+import CardContentFront from "./CardContentFront";
+import { rotationClass } from "./constants";
+import CardContentBack from "./CardContentBack";
+import Link from "next/link";
 
 interface FlashCardProps {
   flashcard: FlashCardWithTags;
 }
 
 export default function FlashCard({ flashcard }: FlashCardProps) {
-  const showAnswerText = "Show Answer";
-  const showQuestionText = "Show Question";
   const [showAnswer, setShowAnswer] = useState(false);
-  const rotationClass = "[transform:rotateY(180deg)]";
-
-  const determineCardContentCssPosition = (
-    textLength: number,
-    otherTextLength: number
-  ) => {
-    return `${
-      textLength > otherTextLength ? "relative" : "absolute"
-    } [backface-visibility:hidden]`;
-  };
 
   const changeShowAnswer = () => {
     setShowAnswer(!showAnswer);
@@ -71,39 +67,14 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
             transform: showAnswer ? "rotateY(180deg)" : "",
           }}
         >
-          <Box
-            className={determineCardContentCssPosition(
-              flashcard.question.length,
-              flashcard.answer.length
-            )}
-          >
-            <Typography variant="body1" component="div">
-              <MDEditor.Markdown
-                style={{ backgroundColor: "inherit", color: "inherit" }}
-                source={flashcard.question}
-              />
-            </Typography>
-          </Box>
-          <Box
-            className={`${determineCardContentCssPosition(
-              flashcard.answer.length,
-              flashcard.question.length
-            )} inset-0 ${rotationClass}`}
-          >
-            <Typography
-              variant="body1"
-              component="div"
-              className={showAnswer ? rotationClass : ""}
-            >
-              <MDEditor.Markdown
-                style={{ backgroundColor: "inherit", color: "inherit" }}
-                source={flashcard.answer}
-              />
-            </Typography>
-          </Box>
+          <CardContentFront flashCard={flashcard} />
+          <CardContentBack flashCard={flashcard} show={showAnswer} />
         </CardContent>
         <CardActions className="justify-center">
-          <Stack spacing={2} className={showAnswer ? rotationClass : ""}>
+          <Stack
+            spacing={2}
+            className={`${showAnswer ? rotationClass : ""} w-full`}
+          >
             <Stack
               direction="row"
               spacing={2}
@@ -113,14 +84,25 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
                 return <Chip label={tag.name} key={crypto.randomUUID()} />;
               })}
             </Stack>
-            <DeleteButton
-              record={flashcard}
-              refreshPage
-              onClick={deleteFlashCard}
-            />
-            <Button size="small" onClick={changeShowAnswer}>
-              {showAnswer ? showQuestionText : showAnswerText}
-            </Button>
+            <Stack
+              direction={`${showAnswer ? "row-reverse" : "row"}`}
+              className="justify-between"
+            >
+              <Stack direction={`${showAnswer ? "row" : "row-reverse"}`}>
+                <IconButton disabled>
+                  <Edit />
+                </IconButton>
+                <DeleteButton
+                  record={flashcard}
+                  refreshPage
+                  onClick={deleteFlashCard}
+                />
+              </Stack>
+
+              <Button onClick={changeShowAnswer} className="[padding:8px]">
+                {showAnswer ? <ArrowCircleLeft /> : <ArrowCircleRight />}
+              </Button>
+            </Stack>
           </Stack>
         </CardActions>
       </Card>
