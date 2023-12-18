@@ -62,7 +62,7 @@ export default function FlashCardCreateForm({
   };
 
   return (
-    <Stack spacing={4}>
+    <Stack spacing={4} className="w-full">
       <Typography variant="h1" className="text-center">
         {questionTitle}
       </Typography>

@@ -3,6 +3,7 @@
 import { Box } from "@mui/material";
 import MDEditor from "@uiw/react-md-editor";
 import { useState } from "react";
+import rehypeSanitize from "rehype-sanitize";
 
 interface MarkdownEditorProps {
   onChange: (changedValue: string) => void;
@@ -21,10 +22,12 @@ export default function MarkdownEditor({ onChange }: MarkdownEditorProps) {
   return (
     <Box>
       <MDEditor
-        className="h-full"
         value={markdownInput}
         onChange={handleTextChange}
         preview="edit"
+        previewOptions={{
+          rehypePlugins: [[rehypeSanitize]],
+        }}
       />
     </Box>
   );

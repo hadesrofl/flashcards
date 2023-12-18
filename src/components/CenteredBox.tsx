@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { ReactNode } from "react";
 
 interface CenteredBoxProps {
-  width?: "screen" | "full";
+  width?: "screen" | "full" | "1/2";
   children?: ReactNode | ReactNode[];
 }
 
