@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import CenteredBox from "@components/CenteredBox";
 import React from "react";
+import AppBarContainer from "@components/navigation/AppBarContainer";
 
 const inter = Inter({ subsets: ["latin"] });
 

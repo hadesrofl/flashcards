@@ -1,18 +1,19 @@
 import { CommonLayoutProps } from "@app/layout";
 import CenteredBox from "@components/CenteredBox";
 import AppBarContainer from "@components/navigation/AppBarContainer";
-import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
+import dbContext from "@server/repositories/dbContext";
 
-export default function FlashCardCreatePageLayout({
+export default async function FlashCardGalleryLayout({
   children,
 }: CommonLayoutProps) {
+  const tags = await dbContext.tags.list();
+
   return (
     <Stack className="w-full">
-      <AppBarContainer />
-      <CenteredBox width="screen">
-        <Card className="p-8">{children}</Card>
-      </CenteredBox>
+      <AppBarContainer>
+      </AppBarContainer>
+      <CenteredBox width="screen">{children}</CenteredBox>
     </Stack>
   );
 }

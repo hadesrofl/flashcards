@@ -14,10 +14,10 @@ export default function TagGallery({ tags, ...props }: TagGalleryProps) {
   const noTagsCreatedText = "No tags created yet :(";
 
   return tags.length > 0 ? (
-    <Grid container {...props}>
+    <Grid container rowGap={2} {...props}>
       {tags.map((tag) => {
         return (
-          <Grid container key={crypto.randomUUID()}>
+          <Grid container className="items-center" key={crypto.randomUUID()}>
             <Grid item xs={9}>
               <Chip label={tag.name} />
             </Grid>
