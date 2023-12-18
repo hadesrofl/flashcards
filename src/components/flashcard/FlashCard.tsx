@@ -1,15 +1,17 @@
 "use client";
 
+import ApiRoutes from "@app/api/apiRoutes";
+import DeleteButton from "@components/DeleteButton";
 import { FlashCardWithTags } from "@customTypes/models/flashcard";
 import {
   Box,
-  Button,
   Card,
-  CardActions,
   CardContent,
-  Chip,
-  Stack,
   Typography,
+  CardActions,
+  Stack,
+  Chip,
+  Button,
 } from "@mui/material";
 import MDEditor from "@uiw/react-md-editor";
 import { useState } from "react";
@@ -35,6 +37,18 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
 
   const changeShowAnswer = () => {
     setShowAnswer(!showAnswer);
+  };
+
+  const deleteFlashCard = async (flashcard: FlashCardWithTags | object) => {
+    if ("id" in flashcard) {
+      try {
+        await fetch(ApiRoutes.flashCards.deleteFlashCardRoute(flashcard.id), {
+          method: "Delete",
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
@@ -99,6 +113,11 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
                 return <Chip label={tag.name} key={crypto.randomUUID()} />;
               })}
             </Stack>
+            <DeleteButton
+              record={flashcard}
+              refreshPage
+              onClick={deleteFlashCard}
+            />
             <Button size="small" onClick={changeShowAnswer}>
               {showAnswer ? showQuestionText : showAnswerText}
             </Button>

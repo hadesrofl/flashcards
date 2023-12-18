@@ -1,6 +1,9 @@
 import { FlashCardWithTags } from "@customTypes/models/flashcard";
 import { Repository } from "./BaseRepository";
+import { cache } from "react";
 import { PrismaClient } from "@prisma/client";
+import { revalidatePath } from "next/cache";
+import AppRoutes from "@app/appRoutes";
 
 class FlashCardRepository extends Repository<FlashCardWithTags> {
   constructor(client: PrismaClient) {
@@ -8,7 +11,7 @@ class FlashCardRepository extends Repository<FlashCardWithTags> {
   }
 
   public async create(flashCard: FlashCardWithTags) {
-    return await this.dbContext.flashcard.create({
+    const created = await this.dbContext.flashcard.create({
       data: {
         ...flashCard,
         id: undefined,
@@ -22,21 +25,36 @@ class FlashCardRepository extends Repository<FlashCardWithTags> {
         tags: true,
       },
     });
+    revalidatePath(AppRoutes.flashCardRoutes.root);
+    return created;
   }
 
-  public async list(skip?: number, limit?: number) {
+  list = cache(async (skip?: number, limit?: number) => {
     return await this.dbContext.flashcard.findMany({
       skip: skip,
       take: limit,
       include: { tags: true },
     });
-  }
+  });
 
-  public async getById(id: number) {
+  getById = cache(async (id: number) => {
     return await this.dbContext.flashcard.findFirstOrThrow({
       where: { id },
       include: { tags: true },
     });
+  });
+
+  public async delete(entity: FlashCardWithTags) {
+    return await this.deleteById(entity.id);
+  }
+
+  public async deleteById(id: number) {
+    const deleted = await this.dbContext.flashcard.delete({
+      where: { id },
+      include: { tags: true },
+    });
+    revalidatePath(AppRoutes.flashCardRoutes.root);
+    return deleted;
   }
 }
 

@@ -26,7 +26,6 @@ export default function FlashCardCreateForm({
   const submitText = "Submit";
 
   const handleSubmit = async () => {
-    router.prefetch(AppRoutes.flashCardRoutes.root);
     const flashcard = CreateFlashCardWithTags(
       question,
       answer,
