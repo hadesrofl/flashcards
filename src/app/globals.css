@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #FFF6F2;
+}
+
 /* overwrite some libs CSS for markdown list styling */
 menu, ol, ul {
     list-style: revert;
