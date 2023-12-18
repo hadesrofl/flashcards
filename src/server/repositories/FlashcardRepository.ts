@@ -2,8 +2,7 @@ import { FlashCardWithTags } from "@customTypes/models/flashcard";
 import { Repository } from "./BaseRepository";
 import { cache } from "react";
 import { PrismaClient } from "@prisma/client";
-import { revalidatePath } from "next/cache";
-import AppRoutes from "@app/appRoutes";
+import FlashCardCache from "@server/cache/FlashCardCache";
 
 class FlashCardRepository extends Repository<FlashCardWithTags> {
   constructor(client: PrismaClient) {
@@ -25,7 +24,7 @@ class FlashCardRepository extends Repository<FlashCardWithTags> {
         tags: true,
       },
     });
-    revalidatePath(AppRoutes.flashCardRoutes.root);
+    FlashCardCache.revalidatePaths();
     return created;
   }
 
@@ -53,7 +52,7 @@ class FlashCardRepository extends Repository<FlashCardWithTags> {
       where: { id },
       include: { tags: true },
     });
-    revalidatePath(AppRoutes.flashCardRoutes.root);
+    FlashCardCache.revalidatePaths();
     return deleted;
   }
 }
