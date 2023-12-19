@@ -28,8 +28,9 @@ class FlashCardRepository extends Repository<FlashCardWithTags> {
     return created;
   }
 
-  list = cache(async (skip?: number, limit?: number) => {
+  list = cache(async (where?: object, skip?: number, limit?: number) => {
     return await this.dbContext.flashcard.findMany({
+      where,
       skip: skip,
       take: limit,
       include: { tags: true },

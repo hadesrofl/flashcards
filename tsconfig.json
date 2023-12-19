@@ -22,6 +22,7 @@
       "@app/*": ["./src/app/*"],
       "@components/*": ["./src/components/*"],
       "@customTypes/*": ["./src/types/*"],
+      "@helpers/*": ["./src/helpers/*"],
       "@server/*": ["./src/server/*"],
     }
   },

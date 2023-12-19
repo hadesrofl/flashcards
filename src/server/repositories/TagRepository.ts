@@ -13,8 +13,8 @@ export class TagRepository extends Repository<Tag> {
     throw new Error("Method not implemented.");
   }
 
-  list = cache(async (skip?: number, limit?: number) => {
-    return await this.dbContext.tag.findMany({ skip, take: limit });
+  list = cache(async (where?: object, skip?: number, limit?: number) => {
+    return await this.dbContext.tag.findMany({ where, skip, take: limit });
   });
 
   getById = cache(async (id: number): Promise<Tag> => {
