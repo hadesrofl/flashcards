@@ -20,6 +20,22 @@ const flashCardCollectionRoute = (tags: string[]) => {
   return `${flashcardRoot}/collections/${joinTagsInPath(cleanedTags)}`;
 };
 
+const flashCardSequenceRoute = (tags: string[]) => {
+  const cleanedTags = cleanTags(tags);
+  return `${flashcardRoot}/collections/sequence${createTagQueryParams(
+    cleanedTags ?? [],
+    "?"
+  )}`;
+};
+
+const flashCardSingleCardRoute = (id: number, tags: string[]) => {
+  const cleanedTags = cleanTags(tags);
+  return `${flashcardRoot}/collections/sequence/${id}${createTagQueryParams(
+    cleanedTags ?? [],
+    "?"
+  )}`;
+};
+
 const flashCardShuffleRoute = (tags: string[]) =>
   `${flashcardRoot}/shuffle/${joinTagsInPath(cleanTags(tags))}`;
 
@@ -27,6 +43,8 @@ const flashCardRoutes = {
   root: flashcardRoot,
   create: `${flashcardRoot}/create`,
   collections: flashCardCollectionRoute,
+  sequence: flashCardSequenceRoute,
+  singleCard: flashCardSingleCardRoute,
   shuffle: flashCardShuffleRoute,
 };
 

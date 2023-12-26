@@ -5,15 +5,10 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Stack, Typography, IconButton } from "@mui/material";
 import React, { useState } from "react";
 import FlashCard from "./FlashCard";
+import CardRotationState from "./helper/CardRotationState";
 
 interface CardCarouselProps {
   flashCards: FlashCardWithTags[];
-}
-
-interface CardRotationState {
-  previousCard: FlashCardWithTags | undefined;
-  currentCard: FlashCardWithTags | undefined;
-  nextCard: FlashCardWithTags | undefined;
 }
 
 export default function CardCarousel({ flashCards }: CardCarouselProps) {

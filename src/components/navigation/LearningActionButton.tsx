@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 import SplitButton from "./SplitButton";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import AppRoutes from "@app/appRoutes";
-import getTagsFromQuery from "@helpers/tags/getTagsFromQuery";
+import { getTagsFromQuery } from "@helpers/tags/getTagsFromQuery";
 import getTagsFromPathname from "@helpers/tags/getTagsFromPathname";
 
 interface LearningActionButtonProps {
@@ -34,7 +34,11 @@ function createNextRoute(selectedAction: string, selectedTags: Tag[]) {
         })
       );
     case actions.showInSequence:
-      break;
+      return AppRoutes.flashCardRoutes.sequence(
+        selectedTags.map((tag) => {
+          return typeof tag === "string" ? tag : tag.name;
+        })
+      );
   }
 }
 
