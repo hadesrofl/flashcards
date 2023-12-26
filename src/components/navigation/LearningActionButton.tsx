@@ -4,12 +4,7 @@ import FilterTagSelect from "./FilterTagSelect";
 import { useEffect, useState } from "react";
 import Stack from "@mui/material/Stack";
 import SplitButton from "./SplitButton";
-import {
-  ReadonlyURLSearchParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import AppRoutes from "@app/appRoutes";
 import getTagsFromQuery from "@helpers/tags/getTagsFromQuery";
 import getTagsFromPathname from "@helpers/tags/getTagsFromPathname";
@@ -28,7 +23,6 @@ function createNextRoute(selectedAction: string, selectedTags: Tag[]) {
   switch (selectedAction) {
     case actions.shuffle:
       return AppRoutes.flashCardRoutes.shuffle(
-        undefined,
         selectedTags.map((tag) => {
           return typeof tag === "string" ? tag : tag.name;
         })

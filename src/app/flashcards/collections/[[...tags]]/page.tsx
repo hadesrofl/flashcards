@@ -1,4 +1,5 @@
 import AppRoutes from "@app/appRoutes";
+import TagParamProps from "@app/flashcards/_shared/props/TagParamProps";
 import FlashCardGallery from "@components/flashcard/FlashCardGallery";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
@@ -7,15 +8,7 @@ import dbContext from "@server/repositories/dbContext";
 import flashCardsByTagsQuery from "@server/repositories/queries/flashcards/flashCardsByTags";
 import Link from "next/link";
 
-interface FlashCardGalleryPageProps {
-  params: {
-    tags?: string[];
-  };
-}
-
-export default async function FlashCardGalleryPage({
-  params,
-}: FlashCardGalleryPageProps) {
+export default async function FlashCardGalleryPage({ params }: TagParamProps) {
   const { tags } = params;
   const query = flashCardsByTagsQuery(tags);
   const flashCards = await dbContext.flashCards.list(query);

@@ -10,19 +10,16 @@ import {
   Box,
   Card,
   CardContent,
-  Typography,
   CardActions,
   Stack,
   Chip,
   Button,
   IconButton,
 } from "@mui/material";
-import MDEditor from "@uiw/react-md-editor";
 import { useState } from "react";
 import CardContentFront from "./CardContentFront";
 import { rotationClass } from "./constants";
 import CardContentBack from "./CardContentBack";
-import Link from "next/link";
 
 interface FlashCardProps {
   flashcard: FlashCardWithTags;
@@ -48,7 +45,7 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
   };
 
   return (
-    <Box className="flex w-screen [perspective:1000px]">
+    <Box className="flex w-full [perspective:1000px]">
       <Card
         className={`w-full flex flex-col justify-between [transform-style:preserve-3d] ${
           showAnswer ? rotationClass : ""

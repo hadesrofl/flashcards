@@ -2,17 +2,19 @@ import { NextRequest } from "next/server";
 import handleServerError from "../../handleServerError";
 import StatusCodes from "@customTypes/StatusCodes";
 import dbContext from "@server/repositories/dbContext";
+import IdParamProps from "@app/flashcards/_shared/props/IdParamProps";
 
-interface FlashCardRouteParams {
-  params: {
-    id: string;
-  };
+export async function GET(_request: NextRequest, { params }: IdParamProps) {
+  const { id } = params;
+  try {
+    const flashCard = await dbContext.flashCards.getById(Number.parseInt(id));
+    return Response.json(flashCard, { status: StatusCodes.OK });
+  } catch (error) {
+    return handleServerError(error);
+  }
 }
 
-export async function DELETE(
-  _request: NextRequest,
-  { params }: FlashCardRouteParams
-) {
+export async function DELETE(_request: NextRequest, { params }: IdParamProps) {
   const { id } = params;
   try {
     await dbContext.flashCards.deleteById(Number.parseInt(id));
