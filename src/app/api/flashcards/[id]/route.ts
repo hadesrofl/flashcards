@@ -15,7 +15,7 @@ export async function GET(_request: NextRequest, { params }: IdParamProps) {
   }
 }
 
-export async function PUT(request: NextRequest, { params }: IdParamProps) {
+export async function PUT(request: NextRequest) {
   const flashcard: FlashCardWithTags = await request.json();
   try {
     await dbContext.flashCards.edit(flashcard);

@@ -10,7 +10,7 @@ interface TagGalleryProps extends CommonProps {
 }
 
 export default function TagGallery({ tags, ...props }: TagGalleryProps) {
-  const iconColumnClasses = "flex items-end";
+  const iconColumnClasses = "flex justify-end";
   const noTagsCreatedText = "No tags created yet :(";
 
   return tags.length > 0 ? (
@@ -18,10 +18,10 @@ export default function TagGallery({ tags, ...props }: TagGalleryProps) {
       {tags.map((tag) => {
         return (
           <Grid container className="items-center" key={crypto.randomUUID()}>
-            <Grid item xs={9}>
+            <Grid item xs={11}>
               <Chip label={tag.name} />
             </Grid>
-            <Grid item xs={3} className={iconColumnClasses}>
+            <Grid item xs={1} className={iconColumnClasses}>
               <TagButtonGroup tag={tag} />
             </Grid>
           </Grid>

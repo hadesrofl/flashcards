@@ -2,14 +2,14 @@ import ActionDialog, { ActionDialogProps } from "@components/ActionDialog";
 import React, { ReactNode, useState } from "react";
 import { IconButtonProps, IconButton } from "@mui/material";
 
-interface DeleteButtonWithDialogProps
+export interface DeleteDialogButtonProps
   extends IconButtonProps,
     Omit<ActionDialogProps, "open" | "onCancel" | "onOk"> {
   onClick: () => void;
   icon: ReactNode;
 }
 
-export default function DialogButton({
+export default function DeleteDialogButton({
   onClick,
   icon,
   titleText,
@@ -17,7 +17,7 @@ export default function DialogButton({
   cancelButton,
   okButton,
   ...props
-}: DeleteButtonWithDialogProps) {
+}: DeleteDialogButtonProps) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

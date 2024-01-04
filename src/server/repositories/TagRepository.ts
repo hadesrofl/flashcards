@@ -9,12 +9,16 @@ export class TagRepository extends Repository<Tag> {
     super(client);
   }
 
-  public async create(entity: Tag): Promise<Tag> {
+  public async create(tag: Tag): Promise<Tag> {
     throw new Error("Method not implemented.");
   }
 
-  public async edit(entity: Tag): Promise<Tag> {
-    throw new Error("Method not implemented.");
+  public async edit(tag: Tag): Promise<Tag> {
+    const updated = await this.dbContext.tag.update({
+      where: { id: tag.id },
+      data: tag,
+    });
+    return updated;
   }
 
   list = cache(async (where?: object, skip?: number, limit?: number) => {

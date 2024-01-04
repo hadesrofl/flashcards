@@ -21,7 +21,7 @@ import { rotationClass } from "./constants";
 import CardContentBack from "./CardContentBack";
 import Link from "next/link";
 import AppRoutes from "@app/appRoutes";
-import DialogButton from "@components/buttons/DialogButton";
+import DeleteDialogButton from "@components/buttons/DeleteDialogButton";
 import Delete from "@mui/icons-material/Delete";
 import { DialogButtonProps } from "@components/ActionDialog";
 import { useRouter } from "next/navigation";
@@ -104,7 +104,7 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
                   </IconButton>
                 </Link>
 
-                <DialogButton
+                <DeleteDialogButton
                   color="error"
                   onClick={deleteFlashCard}
                   icon={<Delete />}
@@ -112,7 +112,7 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
                   contentText={contentText}
                   cancelButton={cancelButton}
                   okButton={okButton}
-                ></DialogButton>
+                ></DeleteDialogButton>
               </Stack>
 
               <Button onClick={changeShowAnswer} className="[padding:8px]">
