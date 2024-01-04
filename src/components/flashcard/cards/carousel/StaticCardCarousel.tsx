@@ -1,6 +1,6 @@
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
-import FlashCard from "./FlashCard";
+import FlashCard from "../FlashCard";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import ArrowForward from "@mui/icons-material/ArrowForward";
 import { notFound } from "next/navigation";

@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
-import determineCardContentCssPosition from "./helper/determineCardContentCssPosition";
+import determineCardContentCssPosition from "../../helper/determineCardContentCssPosition";
 import Typography from "@mui/material/Typography";
 import MDEditor from "@uiw/react-md-editor";
-import CardContentProps from "./cardContent/CardContentProps";
+import CardContentProps from "./CardContentProps";
 import Divider from "@mui/material/Divider";
 
 export default function CardContentFront({ flashCard }: CardContentProps) {

@@ -1,12 +1,12 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import React from "react";
-import BackButton from "./BackButton";
+import BackButton from "./buttons/BackButton";
 import Stack from "@mui/material/Stack";
 import AppRoutes from "@app/appRoutes";
 import Grid from "@mui/material/Grid";
 import LiveClock from "./LiveClock";
-import HomeButton from "./HomeButton";
+import HomeButton from "./buttons/HomeButton";
 
 interface AppBarContainerProps {
   children?: React.ReactNode;

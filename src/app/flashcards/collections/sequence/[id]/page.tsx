@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import TagsSearchParamProps from "@app/flashcards/_shared/props/TagsSearchParamProps";
 import loadCards from "@server/actions/loadCards";
 import CardRotationState from "@components/flashcard/helper/CardRotationState";
-import StaticCardCarousel from "@components/flashcard/StaticCardCarousel";
+import StaticCardCarousel from "@components/flashcard/cards/carousel/StaticCardCarousel";
 import AppRoutes from "@app/appRoutes";
 import { getTagsFromQueryServerComponent } from "@helpers/tags/getTagsFromQuery";
 

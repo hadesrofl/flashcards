@@ -1,4 +1,4 @@
-import { ActionDialogProps } from "@components/ActionDialog";
+import { ActionDialogProps } from "@components/lib/ActionDialog";
 import {
   IconButton,
   Dialog,

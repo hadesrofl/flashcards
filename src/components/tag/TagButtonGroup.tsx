@@ -7,13 +7,13 @@ import React from "react";
 import ApiRoutes from "@app/api/apiRoutes";
 import DeleteDialogButton, {
   DeleteDialogButtonProps,
-} from "@components/buttons/DeleteDialogButton";
+} from "@components/lib/buttons/DeleteDialogButton";
 import Delete from "@mui/icons-material/Delete";
 import { useRouter } from "next/navigation";
 import InputDialogButton, {
   InputDialogButtonProps,
-} from "@components/buttons/InputDialogButton";
-import { DeleteButtonProps } from "@components/buttons/DeleteButton";
+} from "@components/lib/buttons/InputDialogButton";
+import { DeleteButtonProps } from "@components/lib/buttons/DeleteButton";
 
 interface TagButtonGroupProps {
   tag: Tag;

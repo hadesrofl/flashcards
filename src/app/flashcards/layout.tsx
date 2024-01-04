@@ -1,8 +1,8 @@
 import AppRoutes from "@app/appRoutes";
 import { CommonLayoutProps } from "@app/layout";
-import CenteredBox from "@components/CenteredBox";
-import AppBarContainer from "@components/navigation/AppBarContainer";
-import LearningActionButton from "@components/navigation/LearningActionButton";
+import LearningActionButton from "@components/flashcard/buttons/LearningActionButton";
+import CenteredBox from "@components/lib/CenteredBox";
+import AppBarContainer from "@components/lib/navigation/AppBarContainer";
 import AddCircleRounded from "@mui/icons-material/AddCircleRounded";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";

@@ -1,9 +1,9 @@
 import Box from "@mui/material/Box";
-import determineCardContentCssPosition from "./helper/determineCardContentCssPosition";
+import determineCardContentCssPosition from "../../helper/determineCardContentCssPosition";
 import Typography from "@mui/material/Typography";
 import MDEditor from "@uiw/react-md-editor";
-import CardContentProps from "./cardContent/CardContentProps";
-import { rotationClass } from "./constants";
+import CardContentProps from "./CardContentProps";
+import { rotationClass } from "../../constants";
 import { Divider } from "@mui/material";
 
 interface CardContentBackProps extends CardContentProps {

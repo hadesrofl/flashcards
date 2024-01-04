@@ -1,4 +1,4 @@
-import ErrorPage from "@components/ErrorPage";
+import ErrorPage from "@components/lib/ErrorPage";
 
 export default function NotFound() {
   const subtitle = "You made Bobo sad.";

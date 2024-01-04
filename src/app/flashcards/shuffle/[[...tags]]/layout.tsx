@@ -1,5 +1,5 @@
 import { CommonLayoutProps } from "@app/layout";
-import CenteredBox from "@components/CenteredBox";
+import CenteredBox from "@components/lib/CenteredBox";
 import React from "react";
 
 export default function FlashCardSinglePageLayout({

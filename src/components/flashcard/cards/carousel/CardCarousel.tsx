@@ -4,8 +4,8 @@ import { FlashCardWithTags } from "@customTypes/models/flashcard";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Stack, Typography, IconButton } from "@mui/material";
 import React, { useState } from "react";
-import FlashCard from "./FlashCard";
-import CardRotationState from "./helper/CardRotationState";
+import FlashCard from "../FlashCard";
+import CardRotationState from "../../helper/CardRotationState";
 
 interface CardCarouselProps {
   flashCards: FlashCardWithTags[];

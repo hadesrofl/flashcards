@@ -1,9 +1,9 @@
 import { CommonLayoutProps } from "@app/layout";
-import AppBarContainer from "@components/navigation/AppBarContainer";
 import Stack from "@mui/material/Stack";
 import Card from "@mui/material/Card";
 import React from "react";
-import CenteredBox from "@components/CenteredBox";
+import CenteredBox from "@components/lib/CenteredBox";
+import AppBarContainer from "@components/lib/navigation/AppBarContainer";
 
 export default async function TagGalleryLayout({
   children,

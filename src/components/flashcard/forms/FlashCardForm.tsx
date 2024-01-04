@@ -1,10 +1,10 @@
 "use client";
 
 import { Button, Stack, TextField, Typography } from "@mui/material";
-import MarkdownEditor from "../markdown/MarkdownEditor";
+import MarkdownEditor from "../../lib/markdown/MarkdownEditor";
 import { ChangeEvent, useState } from "react";
 import { Tag } from "@prisma/client";
-import AutoCompleteWithLabels from "../AutoCompleteWithLabels";
+import AutoCompleteWithLabels from "../../lib/AutoCompleteWithLabels";
 import { useRouter } from "next/navigation";
 import { CreateFlashCardWithTags } from "@customTypes/factories/FlashCardWithTagsFactory";
 import AppRoutes from "@app/appRoutes";

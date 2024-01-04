@@ -45,7 +45,7 @@ export default function SplitButton({
   };
 
   const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+    setOpen(!open);
   };
 
   const handleClose = (event: Event) => {

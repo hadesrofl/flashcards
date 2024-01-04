@@ -16,14 +16,14 @@ import {
   IconButton,
 } from "@mui/material";
 import { useState } from "react";
-import CardContentFront from "./CardContentFront";
-import { rotationClass } from "./constants";
-import CardContentBack from "./CardContentBack";
+import CardContentFront from "./cardContent/CardContentFront";
+import { rotationClass } from "../constants";
+import CardContentBack from "./cardContent/CardContentBack";
 import Link from "next/link";
 import AppRoutes from "@app/appRoutes";
-import DeleteDialogButton from "@components/buttons/DeleteDialogButton";
+import DeleteDialogButton from "@components/lib/buttons/DeleteDialogButton";
 import Delete from "@mui/icons-material/Delete";
-import { DialogButtonProps } from "@components/ActionDialog";
+import { DialogButtonProps } from "@components/lib/ActionDialog";
 import { useRouter } from "next/navigation";
 
 interface FlashCardProps {
