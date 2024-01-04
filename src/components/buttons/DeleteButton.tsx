@@ -4,10 +4,10 @@ import Delete from "@mui/icons-material/Delete";
 import { IconButton, IconButtonProps } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-interface DeleteButtonProps extends IconButtonProps {
+export interface DeleteButtonProps extends IconButtonProps {
   record: object;
   refreshPage?: boolean;
-  onClick: (value: object) => Promise<void>;
+  onClick: ((value: object) => Promise<void>) | (() => void);
 }
 
 export default function DeleteButton({

@@ -5,7 +5,7 @@ import { Stack, IconButton } from "@mui/material";
 import { Tag } from "@prisma/client";
 import React from "react";
 import ApiRoutes from "@app/api/apiRoutes";
-import DeleteButton from "@components/DeleteButton";
+import DeleteButton from "@components/buttons/DeleteButton";
 
 interface TagButtonGroupProps {
   tag: Tag;

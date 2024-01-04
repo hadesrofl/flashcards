@@ -1,7 +1,6 @@
 "use client";
 
 import ApiRoutes from "@app/api/apiRoutes";
-import DeleteButton from "@components/DeleteButton";
 import { FlashCardWithTags } from "@customTypes/models/flashcard";
 import Edit from "@mui/icons-material/Edit";
 import ArrowCircleLeft from "@mui/icons-material/ArrowCircleLeft";
@@ -20,6 +19,12 @@ import { useState } from "react";
 import CardContentFront from "./CardContentFront";
 import { rotationClass } from "./constants";
 import CardContentBack from "./CardContentBack";
+import Link from "next/link";
+import AppRoutes from "@app/appRoutes";
+import DialogButton from "@components/buttons/DialogButton";
+import Delete from "@mui/icons-material/Delete";
+import { DialogButtonProps } from "@components/ActionDialog";
+import { useRouter } from "next/navigation";
 
 interface FlashCardProps {
   flashcard: FlashCardWithTags;
@@ -27,17 +32,24 @@ interface FlashCardProps {
 
 export default function FlashCard({ flashcard }: FlashCardProps) {
   const [showAnswer, setShowAnswer] = useState(false);
+  const router = useRouter();
+
+  const titleText = "Delete Flashcard";
+  const contentText = `Are you sure, you want to delete the following flashcard?\n\nQuestion: ${flashcard.question}`;
+  const cancelButton: DialogButtonProps = { label: "Cancel", color: "primary" };
+  const okButton: DialogButtonProps = { label: "Delete", color: "error" };
 
   const changeShowAnswer = () => {
     setShowAnswer(!showAnswer);
   };
 
-  const deleteFlashCard = async (flashcard: FlashCardWithTags | object) => {
+  const deleteFlashCard = async () => {
     if ("id" in flashcard) {
       try {
         await fetch(ApiRoutes.flashCards.deleteFlashCardRoute(flashcard.id), {
           method: "Delete",
         });
+        router.refresh();
       } catch (error) {
         console.log(error);
       }
@@ -86,14 +98,21 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
               className="justify-between"
             >
               <Stack direction={`${showAnswer ? "row" : "row-reverse"}`}>
-                <IconButton disabled>
-                  <Edit />
-                </IconButton>
-                <DeleteButton
-                  record={flashcard}
-                  refreshPage
+                <Link href={AppRoutes.flashCardRoutes.edit(flashcard?.id)}>
+                  <IconButton color="secondary">
+                    <Edit />
+                  </IconButton>
+                </Link>
+
+                <DialogButton
+                  color="error"
                   onClick={deleteFlashCard}
-                />
+                  icon={<Delete />}
+                  titleText={titleText}
+                  contentText={contentText}
+                  cancelButton={cancelButton}
+                  okButton={okButton}
+                ></DialogButton>
               </Stack>
 
               <Button onClick={changeShowAnswer} className="[padding:8px]">
