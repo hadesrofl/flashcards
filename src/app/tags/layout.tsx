@@ -12,7 +12,10 @@ export default async function TagGalleryLayout({
     <Stack className="w-full">
       <AppBarContainer />
       <CenteredBox>
-        <Card key={crypto.randomUUID()} className="w-1/2 flex self-center">
+        <Card
+          key={crypto.randomUUID()}
+          className="w-screen md:w-1/2 flex self-center"
+        >
           {children}
         </Card>
       </CenteredBox>

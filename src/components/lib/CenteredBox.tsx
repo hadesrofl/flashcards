@@ -9,7 +9,7 @@ interface CenteredBoxProps {
 export default function CenteredBox({ width, children }: CenteredBoxProps) {
   return (
     <Box
-      className={`flex justify-center items-center w-${
+      className={`flex justify-center items-center w-screen md:w-${
         width ?? "screen"
       } min-h-screen`}
     >

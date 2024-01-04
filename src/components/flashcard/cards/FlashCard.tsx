@@ -57,7 +57,10 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
   };
 
   return (
-    <Box className="flex w-full [perspective:1000px]">
+    <Box
+      className="flex w-full [perspective:1000px]"
+      sx={{ minHeight: "192px" }}
+    >
       <Card
         className={`w-full flex flex-col justify-between [transform-style:preserve-3d] ${
           showAnswer ? rotationClass : ""

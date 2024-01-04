@@ -48,7 +48,7 @@ export default function CardCarousel({ flashCards }: CardCarouselProps) {
   };
 
   return (
-    <Stack className="w-full items-stretch" direction="row" spacing={4}>
+    <Stack className="w-full items-stretch" direction="row">
       <IconButton
         disabled={cardRotation.previousCard === undefined}
         onClick={previousClick}
