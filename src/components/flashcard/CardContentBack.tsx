@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import MDEditor from "@uiw/react-md-editor";
 import CardContentProps from "./cardContent/CardContentProps";
 import { rotationClass } from "./constants";
+import { Divider } from "@mui/material";
 
 interface CardContentBackProps extends CardContentProps {
   show: boolean;
@@ -13,13 +14,18 @@ export default function CardContentBack({
   flashCard,
   show,
 }: CardContentBackProps) {
+  const answerTitle = "Answer";
   return (
     <Box
       className={`${determineCardContentCssPosition(
         flashCard.answer.length,
-        flashCard.question.length
+        flashCard.questionText.length
       )} inset-0 ${rotationClass}`}
     >
+      <Typography variant="h3" className={show ? rotationClass : ""}>
+        {answerTitle}
+      </Typography>
+      <Divider sx={{ marginBottom: "1rem" }} />
       <Typography
         variant="body1"
         component="div"

@@ -1,8 +1,8 @@
 "use client";
 
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import MarkdownEditor from "../markdown/MarkdownEditor";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Tag } from "@prisma/client";
 import AutoCompleteWithLabels from "../AutoCompleteWithLabels";
 import { useRouter } from "next/navigation";
@@ -21,6 +21,9 @@ export default function FlashCardForm({
   flashCard,
 }: FlashCardFormProps) {
   const [question, setQuestion] = useState(flashCard?.question ?? "");
+  const [questionText, setQuestionText] = useState(
+    flashCard?.questionText ?? ""
+  );
   const [answer, setAnswer] = useState(flashCard?.answer ?? "");
   const [tags, setTags] = useState<Tag[]>(flashCard?.tags ?? []);
   const router = useRouter();
@@ -31,6 +34,7 @@ export default function FlashCardForm({
   const handleSubmit = async () => {
     const flashcard = CreateFlashCardWithTags(
       question,
+      questionText,
       answer,
       flashCard?.id ?? undefined,
       tags
@@ -48,8 +52,12 @@ export default function FlashCardForm({
     router.push(AppRoutes.flashCardRoutes.root);
   };
 
-  const handleQuestionChange = (changedQuestion: string) => {
-    setQuestion(changedQuestion);
+  const handleQuestionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setQuestion(event.target.value);
+  };
+
+  const handleQuestionTextChange = (changedQuestion: string) => {
+    setQuestionText(changedQuestion);
   };
 
   const handleAnswerChange = (changedAnswer: string) => {
@@ -70,11 +78,17 @@ export default function FlashCardForm({
 
   return (
     <Stack spacing={4} className="w-full">
-      <Typography variant="h1" className="text-center">
-        {questionTitle}
-      </Typography>
-      <MarkdownEditor value={question} onChange={handleQuestionChange} />
-      <Typography variant="h1" className="text-center">
+      <TextField
+        label={questionTitle}
+        value={question}
+        variant="standard"
+        onChange={handleQuestionChange}
+      />
+      <MarkdownEditor
+        value={questionText}
+        onChange={handleQuestionTextChange}
+      />
+      <Typography variant="h3" className="text-left">
         {answerTitle}
       </Typography>
       <MarkdownEditor value={answer} onChange={handleAnswerChange} />

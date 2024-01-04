@@ -3,19 +3,22 @@ import determineCardContentCssPosition from "./helper/determineCardContentCssPos
 import Typography from "@mui/material/Typography";
 import MDEditor from "@uiw/react-md-editor";
 import CardContentProps from "./cardContent/CardContentProps";
+import Divider from "@mui/material/Divider";
 
 export default function CardContentFront({ flashCard }: CardContentProps) {
   return (
     <Box
       className={determineCardContentCssPosition(
-        flashCard.question.length,
+        flashCard.questionText.length,
         flashCard.answer.length
       )}
     >
+      <Typography variant="h4">{flashCard.question}</Typography>
+      <Divider sx={{ marginBottom: "1rem" }} />
       <Typography variant="body1" component="div">
         <MDEditor.Markdown
           style={{ backgroundColor: "inherit", color: "inherit" }}
-          source={flashCard.question}
+          source={flashCard.questionText}
         />
       </Typography>
     </Box>

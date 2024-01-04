@@ -3,6 +3,7 @@ import { Tag } from "@prisma/client";
 
 export function CreateFlashCardWithTags(
   question: string,
+  questionText: string,
   answer: string,
   id?: number,
   tags?: Tag[],
@@ -11,6 +12,7 @@ export function CreateFlashCardWithTags(
 ): FlashCardWithTags {
   return {
     question: question,
+    questionText: questionText,
     answer: answer,
     id: id ?? 0,
     createdAt: createdAt ?? new Date(Date.now()),
