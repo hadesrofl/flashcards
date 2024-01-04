@@ -17,7 +17,7 @@ export default async function FlashCardGalleryLayout({
   const showTagsButtonText = "Show Tags";
 
   return (
-    <Stack className="w-full mt-6">
+    <Stack className="w-full">
       <AppBarContainer>
         <Link href={AppRoutes.flashCardRoutes.create} className="self-center">
           <IconButton color="success">

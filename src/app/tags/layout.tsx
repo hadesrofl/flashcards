@@ -5,7 +5,9 @@ import Card from "@mui/material/Card";
 import React from "react";
 import CenteredBox from "@components/CenteredBox";
 
-export default function TagGalleryLayout({ children }: CommonLayoutProps) {
+export default async function TagGalleryLayout({
+  children,
+}: CommonLayoutProps) {
   return (
     <Stack className="w-full">
       <AppBarContainer />
