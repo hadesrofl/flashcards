@@ -9,33 +9,41 @@ import { useRouter } from "next/navigation";
 import { CreateFlashCardWithTags } from "@customTypes/factories/FlashCardWithTagsFactory";
 import AppRoutes from "@app/appRoutes";
 import ApiRoutes from "@app/api/apiRoutes";
+import { FlashCardWithTags } from "@customTypes/models/flashcard";
 
-interface FlashCardCreateFormProps {
+interface FlashCardFormProps {
   tagOptions: Tag[];
+  flashCard?: FlashCardWithTags;
 }
 
-export default function FlashCardCreateForm({
+export default function FlashCardForm({
   tagOptions,
-}: FlashCardCreateFormProps) {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [tags, setTags] = useState<Tag[]>([]);
+  flashCard,
+}: FlashCardFormProps) {
+  const [question, setQuestion] = useState(flashCard?.question ?? "");
+  const [answer, setAnswer] = useState(flashCard?.answer ?? "");
+  const [tags, setTags] = useState<Tag[]>(flashCard?.tags ?? []);
   const router = useRouter();
   const questionTitle = "Question";
   const answerTitle = "Answer";
-  const submitText = "Submit";
+  const saveText = "Save";
 
   const handleSubmit = async () => {
     const flashcard = CreateFlashCardWithTags(
       question,
       answer,
-      undefined,
+      flashCard?.id ?? undefined,
       tags
     );
-    const request = new Request(ApiRoutes.flashCards.createFlashCardsRoute(), {
-      body: JSON.stringify(flashcard),
-      method: "POST",
-    });
+    const request = new Request(
+      flashCard?.id
+        ? ApiRoutes.flashCards.editFlashCardRoute(flashCard.id)
+        : ApiRoutes.flashCards.createFlashCardsRoute(),
+      {
+        body: JSON.stringify(flashcard),
+        method: flashCard?.id ? "PUT" : "POST",
+      }
+    );
     await fetch(request);
     router.push(AppRoutes.flashCardRoutes.root);
   };
@@ -65,18 +73,19 @@ export default function FlashCardCreateForm({
       <Typography variant="h1" className="text-center">
         {questionTitle}
       </Typography>
-      <MarkdownEditor onChange={handleQuestionChange} />
+      <MarkdownEditor value={question} onChange={handleQuestionChange} />
       <Typography variant="h1" className="text-center">
         {answerTitle}
       </Typography>
-      <MarkdownEditor onChange={handleAnswerChange} />
+      <MarkdownEditor value={answer} onChange={handleAnswerChange} />
       <AutoCompleteWithLabels
-        titel="Tags"
+        title="Tags"
+        initSelection={tags.map((tag) => tag.name)}
         options={tagOptions.map((tag) => tag.name)}
         onChange={handleTagsChange}
       />
       <Button color="success" variant="outlined" onClick={handleSubmit}>
-        {submitText}
+        {saveText}
       </Button>
     </Stack>
   );

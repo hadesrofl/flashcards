@@ -35,18 +35,20 @@ const AutoCompleteLabel = ({ data, handleDelete }: AutoCompleteLabelProps) => {
 };
 
 interface AutoCompleteWithLabelsProps {
+  initSelection?: string[];
   onChange: (texts: string[]) => void;
   options: string[];
-  titel?: string;
+  title?: string;
 }
 
 export default function AutoCompleteWithLabels({
   onChange,
   options,
-  titel,
+  title,
+  initSelection,
 }: AutoCompleteWithLabelsProps) {
-  const label = titel ?? "Input";
-  const [texts, setTexts] = useState<string[]>([]);
+  const label = title ?? "Input";
+  const [texts, setTexts] = useState<string[]>(initSelection ?? []);
   const [currentInput, setCurrentInput] = useState<string>("");
   const [typing, setTyping] = useState<NodeJS.Timeout>();
   const DebounceTimeInMs = 750;

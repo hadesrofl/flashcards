@@ -3,6 +3,7 @@ import { Repository } from "./BaseRepository";
 import { cache } from "react";
 import { PrismaClient } from "@prisma/client";
 import FlashCardCache from "@server/cache/FlashCardCache";
+import getTagsToDelete from "./helpers/getTagsToDelete";
 
 class FlashCardRepository extends Repository<FlashCardWithTags> {
   constructor(client: PrismaClient) {
@@ -24,8 +25,40 @@ class FlashCardRepository extends Repository<FlashCardWithTags> {
         tags: true,
       },
     });
-    FlashCardCache.revalidatePaths();
+    await FlashCardCache.revalidatePaths(created.id, created.tags);
     return created;
+  }
+
+  public async edit(flashCard: FlashCardWithTags) {
+    const oldFlashCardEntry = await this.dbContext.flashcard.findFirst({
+      where: { id: flashCard.id },
+      include: { tags: true },
+    });
+    const tagsToDelete =
+      oldFlashCardEntry !== null
+        ? getTagsToDelete(oldFlashCardEntry, flashCard)
+        : [];
+
+    const updated = await this.dbContext.flashcard.update({
+      where: {
+        id: flashCard.id,
+      },
+      data: {
+        ...flashCard,
+        tags: {
+          connectOrCreate: flashCard.tags.map((tag) => {
+            return { where: { name: tag.name }, create: { name: tag.name } };
+          }),
+          disconnect: tagsToDelete,
+        },
+      },
+      include: {
+        tags: true,
+      },
+    });
+
+    await FlashCardCache.revalidatePaths(updated.id, updated.tags);
+    return updated;
   }
 
   list = cache(async (where?: object, skip?: number, limit?: number) => {
@@ -53,7 +86,7 @@ class FlashCardRepository extends Repository<FlashCardWithTags> {
       where: { id },
       include: { tags: true },
     });
-    FlashCardCache.revalidatePaths();
+    FlashCardCache.revalidatePaths(deleted.id, deleted.tags);
     return deleted;
   }
 }

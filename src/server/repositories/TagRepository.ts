@@ -13,6 +13,10 @@ export class TagRepository extends Repository<Tag> {
     throw new Error("Method not implemented.");
   }
 
+  public async edit(entity: Tag): Promise<Tag> {
+    throw new Error("Method not implemented.");
+  }
+
   list = cache(async (where?: object, skip?: number, limit?: number) => {
     return await this.dbContext.tag.findMany({ where, skip, take: limit });
   });
@@ -26,8 +30,17 @@ export class TagRepository extends Repository<Tag> {
   }
 
   public async deleteById(id: number) {
+    const flashCards = await this.dbContext.flashcard.findMany({
+      where: { tags: { some: { id } } },
+      include: { tags: true },
+    });
     const deleted = await this.dbContext.tag.delete({ where: { id } });
-    FlashCardCache.revalidatePaths();
+    for (let i = 0; i < flashCards.length; i += 1) {
+      await FlashCardCache.revalidatePaths(
+        flashCards[i].id,
+        flashCards[i].tags
+      );
+    }
     TagCache.revalidatePaths();
     return deleted;
   }

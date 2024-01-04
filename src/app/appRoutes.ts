@@ -15,6 +15,8 @@ function joinTagsInPath(tags: string[] | undefined) {
   return tags !== undefined && tags.length > 0 ? tags.join("/") : "";
 }
 
+const flashCardEditRoute = (id: number) => `${flashcardRoot}/edit/${id}`;
+
 const flashCardCollectionRoute = (tags: string[]) => {
   const cleanedTags = cleanTags(tags);
   return `${flashcardRoot}/collections/${joinTagsInPath(cleanedTags)}`;
@@ -42,6 +44,7 @@ const flashCardShuffleRoute = (tags: string[]) =>
 const flashCardRoutes = {
   root: flashcardRoot,
   create: `${flashcardRoot}/create`,
+  edit: flashCardEditRoute,
   collections: flashCardCollectionRoute,
   sequence: flashCardSequenceRoute,
   singleCard: flashCardSingleCardRoute,

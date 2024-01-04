@@ -16,6 +16,7 @@ export abstract class Repository<T> implements IRepository<T> {
   }
 
   abstract create(entity: T): Promise<T>;
+  abstract edit(entity: T): Promise<T>;
   abstract list: (
     where?: object,
     skip?: number,
