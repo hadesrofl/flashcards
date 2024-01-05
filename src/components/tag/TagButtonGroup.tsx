@@ -1,7 +1,7 @@
 "use client";
 
 import { Edit } from "@mui/icons-material";
-import { Stack, IconButton } from "@mui/material";
+import { Stack } from "@mui/material";
 import { Tag } from "@prisma/client";
 import React from "react";
 import ApiRoutes from "@app/api/apiRoutes";
@@ -13,7 +13,6 @@ import { useRouter } from "next/navigation";
 import InputDialogButton, {
   InputDialogButtonProps,
 } from "@components/lib/buttons/InputDialogButton";
-import { DeleteButtonProps } from "@components/lib/buttons/DeleteButton";
 
 interface TagButtonGroupProps {
   tag: Tag;
