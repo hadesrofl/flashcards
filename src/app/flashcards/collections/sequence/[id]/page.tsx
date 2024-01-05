@@ -1,11 +1,11 @@
 import IdParamProps from "@app/flashcards/_shared/props/IdParamProps";
 import { notFound } from "next/navigation";
 import TagsSearchParamProps from "@app/flashcards/_shared/props/TagsSearchParamProps";
-import loadCards from "@server/actions/loadCards";
 import CardRotationState from "@components/flashcard/helper/CardRotationState";
 import StaticCardCarousel from "@components/flashcard/cards/carousel/StaticCardCarousel";
 import AppRoutes from "@app/appRoutes";
-import { getTagsFromQueryServerComponent } from "@helpers/tags/getTagsFromQuery";
+import { getTagsFromQueryServerComponent } from "@app/_shared/tags/helpers/getTagsFromQuery";
+import loadCards from "@app/api/_internal/flashcards/actions/loadCards";
 
 interface FlashCardSinglePageProps extends IdParamProps, TagsSearchParamProps {}
 

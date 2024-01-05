@@ -1,7 +1,7 @@
+import { getTagsFromQueryServerComponent } from "@app/_shared/tags/helpers/getTagsFromQuery";
+import loadCards from "@app/api/_internal/flashcards/actions/loadCards";
 import AppRoutes from "@app/appRoutes";
 import TagsSearchParamProps from "@app/flashcards/_shared/props/TagsSearchParamProps";
-import { getTagsFromQueryServerComponent } from "@helpers/tags/getTagsFromQuery";
-import loadCards from "@server/actions/loadCards";
 import { notFound, redirect } from "next/navigation";
 
 export default async function FlashCardSequencePage({

@@ -1,4 +1,3 @@
-import { ActionDialogProps } from "@components/lib/ActionDialog";
 import {
   IconButton,
   Dialog,
@@ -11,6 +10,7 @@ import {
   IconButtonProps,
 } from "@mui/material";
 import { ChangeEvent, ReactNode, useState } from "react";
+import { ActionDialogProps } from "../dialogs/ActionDialog";
 
 export interface InputDialogButtonProps
   extends IconButtonProps,

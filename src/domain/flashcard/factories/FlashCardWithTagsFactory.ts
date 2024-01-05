@@ -1,5 +1,5 @@
-import { FlashCardWithTags } from "@customTypes/models/flashcard";
 import { Tag } from "@prisma/client";
+import { FlashCardWithTags } from "../models/flashcard";
 
 export function CreateFlashCardWithTags(
   question: string,

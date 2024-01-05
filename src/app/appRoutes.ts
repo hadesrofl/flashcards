@@ -1,4 +1,4 @@
-import createTagQueryParams from "@helpers/tags/createTagQueryParams";
+import createTagQueryParams from "./_shared/tags/helpers/createTagQueryParams";
 
 const flashcardRoot = "/flashcards";
 const tagRoot = "/tags";

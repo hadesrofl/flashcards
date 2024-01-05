@@ -1,5 +1,5 @@
-import createTagQueryParams from "@helpers/tags/createTagQueryParams";
-import { apiRoots } from "./roots";
+import createTagQueryParams from "@app/_shared/tags/helpers/createTagQueryParams";
+import { apiRoots } from "../routeRoots";
 
 export const createFlashCardsRoute = () =>
   `${apiRoots.root}${apiRoots.flashcards}`;

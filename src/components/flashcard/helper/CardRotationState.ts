@@ -1,4 +1,4 @@
-import { FlashCardWithTags } from "@customTypes/models/flashcard";
+import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
 
 export default interface CardRotationState {
   previousCard: FlashCardWithTags | undefined;

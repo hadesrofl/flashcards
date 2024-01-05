@@ -1,18 +1,18 @@
-import handleServerError from "@app/api/handleServerError";
+import StatusCodes from "@app/api/_internal/shared/StatusCodes";
+import dbContext from "@app/api/_internal/shared/db/dbContext";
+import handleServerError from "@app/api/_internal/shared/errors/handleServerError";
 import IdParamProps from "@app/flashcards/_shared/props/IdParamProps";
-import StatusCodes from "@customTypes/StatusCodes";
 import { Tag } from "@prisma/client";
-import dbContext from "@server/repositories/dbContext";
 import { NextRequest } from "next/server";
 
 export async function PUT(request: NextRequest) {
-    const tag: Tag = await request.json();
-    try {
-      await dbContext.tags.edit(tag);
-      return new Response(undefined, { status: StatusCodes.NoContent });
-    } catch (error) {
-      return handleServerError(error);
-    }
+  const tag: Tag = await request.json();
+  try {
+    await dbContext.tags.edit(tag);
+    return new Response(undefined, { status: StatusCodes.NoContent });
+  } catch (error) {
+    return handleServerError(error);
+  }
 }
 
 export async function DELETE(_request: NextRequest, { params }: IdParamProps) {

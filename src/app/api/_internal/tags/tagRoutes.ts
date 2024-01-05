@@ -1,4 +1,4 @@
-import { apiRoots } from "./roots";
+import { apiRoots } from "../routeRoots";
 
 export const editTagRoute = (id: number) =>
   `${apiRoots.root}${apiRoots.tags}/${id}`;

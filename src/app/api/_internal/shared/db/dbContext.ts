@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import FlashCardRepository from "./FlashcardRepository";
-import { TagRepository } from "./TagRepository";
+import FlashCardRepository from "../../flashcards/db/FlashcardRepository";
+import { TagRepository } from "../../tags/db/TagRepository";
 
 const client = new PrismaClient();
 

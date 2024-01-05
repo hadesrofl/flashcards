@@ -6,10 +6,10 @@ import { ChangeEvent, useState } from "react";
 import { Tag } from "@prisma/client";
 import AutoCompleteWithLabels from "../../lib/AutoCompleteWithLabels";
 import { useRouter } from "next/navigation";
-import { CreateFlashCardWithTags } from "@customTypes/factories/FlashCardWithTagsFactory";
 import AppRoutes from "@app/appRoutes";
 import ApiRoutes from "@app/api/apiRoutes";
-import { FlashCardWithTags } from "@customTypes/models/flashcard";
+import { CreateFlashCardWithTags } from "@domain/flashcard/factories/FlashCardWithTagsFactory";
+import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
 
 interface FlashCardFormProps {
   tagOptions: Tag[];

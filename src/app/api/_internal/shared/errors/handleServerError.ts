@@ -1,5 +1,5 @@
-import StatusCodes from "@customTypes/StatusCodes";
-import ServerError from "@server/ServerError";
+import StatusCodes from "../StatusCodes";
+import ServerError from "./ServerError";
 
 const handleServerError = (error: unknown, status?: StatusCodes) => {
   const serverErrorStatus = status ?? StatusCodes.InternalServerError;

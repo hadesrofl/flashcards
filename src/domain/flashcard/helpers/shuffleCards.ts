@@ -1,4 +1,4 @@
-import { FlashCardWithTags } from "@customTypes/models/flashcard";
+import { FlashCardWithTags } from "../models/flashcard";
 
 export default function shuffleCards(flashCards: FlashCardWithTags[]) {
   return flashCards

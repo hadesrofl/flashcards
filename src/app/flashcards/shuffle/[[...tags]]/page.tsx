@@ -1,7 +1,7 @@
+import loadCards from "@app/api/_internal/flashcards/actions/loadCards";
 import TagParamProps from "@app/flashcards/_shared/props/TagParamProps";
 import CardCarousel from "@components/flashcard/cards/carousel/CardCarousel";
-import shuffleCards from "@helpers/flashcards/shuffleCards";
-import loadCards from "@server/actions/loadCards";
+import shuffleCards from "@domain/flashcard/helpers/shuffleCards";
 import { notFound } from "next/navigation";
 
 export default async function FlashCardShufflePage({ params }: TagParamProps) {

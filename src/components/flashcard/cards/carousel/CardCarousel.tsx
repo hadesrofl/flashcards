@@ -1,11 +1,11 @@
 "use client";
 
-import { FlashCardWithTags } from "@customTypes/models/flashcard";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Stack, Typography, IconButton } from "@mui/material";
 import React, { useState } from "react";
 import FlashCard from "../FlashCard";
 import CardRotationState from "../../helper/CardRotationState";
+import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
 
 interface CardCarouselProps {
   flashCards: FlashCardWithTags[];

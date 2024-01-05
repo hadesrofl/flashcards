@@ -6,8 +6,8 @@ import Stack from "@mui/material/Stack";
 import SplitButton from "@components/lib/navigation/buttons/SplitButton";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import AppRoutes from "@app/appRoutes";
-import { getTagsFromQuery } from "@helpers/tags/getTagsFromQuery";
-import getTagsFromPathname from "@helpers/tags/getTagsFromPathname";
+import getTagsFromPathname from "@app/_shared/tags/helpers/getTagsFromPathname";
+import { getTagsFromQuery } from "@app/_shared/tags/helpers/getTagsFromQuery";
 
 interface LearningActionButtonProps {
   tags: Tag[];

@@ -1,7 +1,6 @@
 "use client";
 
 import ApiRoutes from "@app/api/apiRoutes";
-import { FlashCardWithTags } from "@customTypes/models/flashcard";
 import Edit from "@mui/icons-material/Edit";
 import ArrowCircleLeft from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRight from "@mui/icons-material/ArrowCircleRight";
@@ -25,6 +24,7 @@ import DeleteDialogButton from "@components/lib/buttons/DeleteDialogButton";
 import Delete from "@mui/icons-material/Delete";
 import { useRouter } from "next/navigation";
 import { DialogButtonProps } from "@components/lib/dialogs/ActionDialog";
+import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
 
 interface FlashCardProps {
   flashcard: FlashCardWithTags;

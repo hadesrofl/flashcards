@@ -1,3 +1,4 @@
+import dbContext from "@app/api/_internal/shared/db/dbContext";
 import AppRoutes from "@app/appRoutes";
 import { CommonLayoutProps } from "@app/layout";
 import LearningActionButton from "@components/flashcard/buttons/LearningActionButton";
@@ -7,7 +8,6 @@ import AddCircleRounded from "@mui/icons-material/AddCircleRounded";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
-import dbContext from "@server/repositories/dbContext";
 import Link from "next/link";
 
 export default async function FlashCardGalleryLayout({

@@ -1,8 +1,8 @@
-import StatusCodes from "@customTypes/StatusCodes";
-import { FlashCardWithTags } from "@customTypes/models/flashcard";
 import { NextRequest } from "next/server";
-import dbContext from "@server/repositories/dbContext";
-import handleServerError from "../handleServerError";
+import handleServerError from "../_internal/shared/errors/handleServerError";
+import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
+import StatusCodes from "../_internal/shared/StatusCodes";
+import dbContext from "../_internal/shared/db/dbContext";
 
 export async function POST(request: NextRequest) {
   const flashcard: FlashCardWithTags = await request.json();

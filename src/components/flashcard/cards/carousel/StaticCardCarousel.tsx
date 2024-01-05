@@ -5,7 +5,7 @@ import ArrowBack from "@mui/icons-material/ArrowBack";
 import ArrowForward from "@mui/icons-material/ArrowForward";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { FlashCardWithTags } from "@customTypes/models/flashcard";
+import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
 
 interface StaticCardCarouselProps {
   card: FlashCardWithTags | undefined;

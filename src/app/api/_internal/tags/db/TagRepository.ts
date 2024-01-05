@@ -1,8 +1,8 @@
 import { PrismaClient, Tag } from "@prisma/client";
-import { Repository } from "./BaseRepository";
 import { cache } from "react";
-import TagCache from "@server/cache/TagCache";
-import FlashCardCache from "@server/cache/FlashCardCache";
+import { Repository } from "../../shared/db/BaseRepository";
+import FlashCardCache from "../../flashcards/cache/FlashCardCache";
+import TagCache from "../cache/TagCache";
 
 export class TagRepository extends Repository<Tag> {
   constructor(client: PrismaClient) {

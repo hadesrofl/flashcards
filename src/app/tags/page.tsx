@@ -1,6 +1,6 @@
+import dbContext from "@app/api/_internal/shared/db/dbContext";
 import TagGallery from "@components/tag/TagGallery";
 import NoTagDialog from "@components/tag/dialog/NoTagDialog";
-import dbContext from "@server/repositories/dbContext";
 
 export default async function TagGalleryPage() {
   const tags = await dbContext.tags.list();

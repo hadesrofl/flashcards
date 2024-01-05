@@ -1,5 +1,5 @@
-import flashCardsByTagsQuery from "../repositories/queries/flashcards/flashCardsByTags";
-import dbContext from "@server/repositories/dbContext";
+import dbContext from "../../shared/db/dbContext";
+import flashCardsByTagsQuery from "../db/queries/flashCardsByTags";
 
 export default async function loadCards(
   tags?: string | string[],

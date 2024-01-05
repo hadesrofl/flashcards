@@ -1,4 +1,4 @@
-import StatusCodes from "@customTypes/StatusCodes";
+import StatusCodes from "../StatusCodes";
 
 class ServerError {
   message: string;

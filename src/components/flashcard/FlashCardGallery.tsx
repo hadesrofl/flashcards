@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import { CommonProps } from "@mui/material/OverridableComponent";
 import FlashCard from "./cards/FlashCard";
-import { FlashCardWithTags } from "@customTypes/models/flashcard";
+import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
 
 interface FlashCardGalleryProps extends CommonProps {
   flashCards: FlashCardWithTags[];

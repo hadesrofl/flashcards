@@ -4,8 +4,8 @@ import {
   getFlashCardRoute,
   deleteFlashCardRoute,
   editFlashCardRoute,
-} from "./_routes/flashcardRoutes";
-import { deleteTagRoute, editTagRoute } from "./_routes/tagRoutes";
+} from "./_internal/flashcards/flashcardRoutes";
+import { deleteTagRoute, editTagRoute } from "./_internal/tags/tagRoutes";
 
 const ApiRoutes = {
   flashCards: {

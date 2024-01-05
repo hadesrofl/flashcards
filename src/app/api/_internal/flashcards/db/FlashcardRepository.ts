@@ -1,9 +1,9 @@
-import { FlashCardWithTags } from "@customTypes/models/flashcard";
-import { Repository } from "./BaseRepository";
+import { Repository } from "../../shared/db/BaseRepository";
 import { cache } from "react";
 import { PrismaClient } from "@prisma/client";
-import FlashCardCache from "@server/cache/FlashCardCache";
-import getTagsToDelete from "./helpers/getTagsToDelete";
+import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
+import getTagsToDelete from "../../tags/db/helpers/getTagsToDelete";
+import FlashCardCache from "../cache/FlashCardCache";
 
 class FlashCardRepository extends Repository<FlashCardWithTags> {
   constructor(client: PrismaClient) {
