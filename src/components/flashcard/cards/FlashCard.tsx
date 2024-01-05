@@ -23,8 +23,8 @@ import Link from "next/link";
 import AppRoutes from "@app/appRoutes";
 import DeleteDialogButton from "@components/lib/buttons/DeleteDialogButton";
 import Delete from "@mui/icons-material/Delete";
-import { DialogButtonProps } from "@components/lib/ActionDialog";
 import { useRouter } from "next/navigation";
+import { DialogButtonProps } from "@components/lib/dialogs/ActionDialog";
 
 interface FlashCardProps {
   flashcard: FlashCardWithTags;

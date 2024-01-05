@@ -1,6 +1,6 @@
-import ActionDialog, { ActionDialogProps } from "@components/lib/ActionDialog";
 import React, { ReactNode, useState } from "react";
 import { IconButtonProps, IconButton } from "@mui/material";
+import ActionDialog, { ActionDialogProps } from "../dialogs/ActionDialog";
 
 export interface DeleteDialogButtonProps
   extends IconButtonProps,

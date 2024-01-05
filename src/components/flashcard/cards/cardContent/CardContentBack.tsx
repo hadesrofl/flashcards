@@ -20,7 +20,7 @@ export default function CardContentBack({
       className={`${determineCardContentCssPosition(
         flashCard.answer.length,
         flashCard.questionText.length
-      )} inset-0 ${rotationClass}`}
+      )} inset-0 m-4 ${rotationClass}`}
     >
       <Typography variant="h3" className={show ? rotationClass : ""}>
         {answerTitle}

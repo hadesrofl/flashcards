@@ -50,6 +50,7 @@ export default function FlashCardForm({
     );
     await fetch(request);
     router.push(AppRoutes.flashCardRoutes.root);
+    router.refresh();
   };
 
   const handleQuestionChange = (event: ChangeEvent<HTMLInputElement>) => {
