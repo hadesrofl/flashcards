@@ -16,7 +16,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4",
-    "@prisma/client": "^5.7.0",
+    "@prisma/client": "^5.7.1",
     "@uiw/react-md-editor": "^4.0.1",
     "next": "14.0.4",
     "prisma": "^5.7.0",
