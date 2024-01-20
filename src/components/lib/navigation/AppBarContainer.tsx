@@ -9,18 +9,24 @@ import LiveClock from "./LiveClock";
 import HomeButton from "./buttons/HomeButton";
 
 interface AppBarContainerProps {
+  mobileMenu?: JSX.Element;
   children?: React.ReactNode;
 }
 
-export default function AppBarContainer({ children }: AppBarContainerProps) {
+export default function AppBarContainer({
+  mobileMenu,
+  children,
+}: AppBarContainerProps) {
   const justifyClass =
-    children !== undefined ? "justify-center" : "justify-center";
+    children !== undefined ? "md:justify-center" : "md:justify-center";
   const widthClass = "full";
 
   return (
     <AppBar position="static" className="py-2" color="inherit">
       <Toolbar className={`${justifyClass} w-${widthClass} p-0`}>
-        <Grid container marginX={2}>
+        {mobileMenu}
+
+        <Grid container marginX={2} display={{ xs: "none", md: "flex" }}>
           <Grid item xs={1} className="flex self-center">
             <Stack direction="row" spacing={2}>
               <BackButton />
