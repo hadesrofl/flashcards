@@ -19,6 +19,7 @@ interface YesNoDialogProps
 export default function YesNoDialog({
   titleText,
   contentText,
+  borderColor,
   noButton = { label: "No", color: "error" },
   onNo,
   yesButton = { label: "Yes", color: "primary" },
@@ -32,6 +33,7 @@ export default function YesNoDialog({
     <ActionDialog
       titleText={titleText}
       contentText={contentText}
+      borderColor={borderColor}
       cancelButton={noButton}
       okButton={yesButton}
       open={open}

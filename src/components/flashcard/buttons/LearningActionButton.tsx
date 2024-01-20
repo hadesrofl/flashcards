@@ -77,7 +77,7 @@ export default function LearningActionButton({
   };
 
   return (
-    <Stack direction="row" className="w-1/2" spacing={4}>
+    <Stack direction="row" className="ml-4 md:ml-0 w-5/6 md:w-1/2" spacing={4}>
       <FilterTagSelect
         options={tags}
         initSelect={selectedTags}

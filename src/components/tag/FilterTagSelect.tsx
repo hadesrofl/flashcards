@@ -87,8 +87,10 @@ export default function FilterTagSelect({
   }, [selectedTags]);
 
   return (
-    <FormControl className="h-full w-full" variant="filled">
-      <InputLabel id="filter-tag-select-label">Tags</InputLabel>
+    <FormControl className="h-full w-full" variant="outlined">
+      <InputLabel color="primary" id="filter-tag-select-label">
+        Tags
+      </InputLabel>
       <Select
         className="h-full"
         labelId="filter-tag-select-label"
@@ -96,7 +98,13 @@ export default function FilterTagSelect({
         multiple
         value={selectedTags}
         onChange={handleChange}
-        input={<OutlinedInput id="select-multiple-tags" label="Tags" />}
+        input={
+          <OutlinedInput
+            color="primary"
+            id="select-multiple-tags"
+            label="Tags"
+          />
+        }
         renderValue={(selected) => (
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
             {selected.map((tag) => (

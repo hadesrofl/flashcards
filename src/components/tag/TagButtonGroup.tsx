@@ -23,7 +23,7 @@ export default function TagButtonGroup({ tag }: TagButtonGroupProps) {
   const deleteButtonProps: Omit<DeleteDialogButtonProps, "icon" | "onClick"> = {
     titleText: "Delete Tag",
     contentText: `Are you sure, you want to delete the Tag: ${tag.name}`,
-    cancelButton: { label: "Cancel", color: "primary" },
+    cancelButton: { label: "Cancel", color: "secondary" },
     okButton: { label: "Delete", color: "error" },
   };
 
@@ -64,6 +64,7 @@ export default function TagButtonGroup({ tag }: TagButtonGroupProps) {
   return (
     <Stack direction="row" spacing={2}>
       <InputDialogButton
+        color="primary"
         value={tag.name}
         label={inputButtonProps.label}
         onOk={editTag}

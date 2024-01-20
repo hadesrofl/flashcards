@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { IconButtonProps, IconButton } from "@mui/material";
+import { IconButtonProps, IconButton, useTheme } from "@mui/material";
 import ActionDialog, { ActionDialogProps } from "../dialogs/ActionDialog";
 
 export interface DeleteDialogButtonProps
@@ -19,6 +19,7 @@ export default function DeleteDialogButton({
   ...props
 }: DeleteDialogButtonProps) {
   const [open, setOpen] = useState(false);
+  const theme = useTheme();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -41,6 +42,7 @@ export default function DeleteDialogButton({
       <ActionDialog
         titleText={titleText}
         contentText={contentText}
+        borderColor={theme.palette.error.main}
         cancelButton={cancelButton}
         okButton={okButton}
         open={open}
