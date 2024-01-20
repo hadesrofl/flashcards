@@ -29,3 +29,9 @@ updates:
           - "@emotion*"
         update-types:
           - "patch"
+      prisma:
+        patterns:
+          - "@prisma*"
+          - "prisma*"
+        update-types:
+          - "patch"
