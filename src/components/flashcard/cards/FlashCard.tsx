@@ -36,7 +36,10 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
 
   const titleText = "Delete Flashcard";
   const contentText = `Are you sure, you want to delete the following flashcard?\n\nQuestion: ${flashcard.question}`;
-  const cancelButton: DialogButtonProps = { label: "Cancel", color: "primary" };
+  const cancelButton: DialogButtonProps = {
+    label: "Cancel",
+    color: "secondary",
+  };
   const okButton: DialogButtonProps = { label: "Delete", color: "error" };
 
   const changeShowAnswer = () => {

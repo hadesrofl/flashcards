@@ -18,11 +18,7 @@ export default function AppBarContainer({ children }: AppBarContainerProps) {
   const widthClass = "full";
 
   return (
-    <AppBar
-      position="static"
-      className="py-2"
-      sx={{ backgroundColor: "white" }}
-    >
+    <AppBar position="static" className="py-2" color="inherit">
       <Toolbar className={`${justifyClass} w-${widthClass} p-0`}>
         <Grid container marginX={2}>
           <Grid item xs={1} className="flex self-center">

@@ -3,9 +3,9 @@ import {
   DialogContentText,
   DialogActions,
   Button,
-  Dialog,
   DialogTitle,
 } from "@mui/material";
+import BaseDialog, { BaseDialogProps } from "./BaseDialog";
 
 type Color =
   | "inherit"
@@ -21,19 +21,18 @@ export interface DialogButtonProps {
   color: Color;
 }
 
-export interface ActionDialogProps {
+export interface ActionDialogProps extends BaseDialogProps {
   titleText: string;
   contentText: string;
   cancelButton: DialogButtonProps;
   okButton: DialogButtonProps;
-  open: boolean;
-  onCancel: () => void;
   onOk: () => void;
 }
 
 export default function ActionDialog({
   titleText,
   contentText,
+  borderColor,
   cancelButton,
   okButton,
   open,
@@ -41,9 +40,10 @@ export default function ActionDialog({
   onOk,
 }: ActionDialogProps) {
   return (
-    <Dialog
+    <BaseDialog
       open={open}
-      onClose={onCancel}
+      onCancel={onCancel}
+      borderColor={borderColor}
       aria-labelledby="action-dialog-title"
       aria-describedby="action-dialog-description"
     >
@@ -64,6 +64,6 @@ export default function ActionDialog({
           {okButton.label}
         </Button>
       </DialogActions>
-    </Dialog>
+    </BaseDialog>
   );
 }

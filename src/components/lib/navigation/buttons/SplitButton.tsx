@@ -62,10 +62,10 @@ export default function SplitButton({
   return (
     <>
       <ButtonGroup
-        variant="outlined"
+        variant="contained"
         ref={anchorRef}
         aria-label="split button"
-        className="w-full shadow-none w-2/6"
+        className="w-full w-2/6"
       >
         <Button onClick={handleClick} className="w-5/6">
           {options[selectedIndex]}

@@ -20,12 +20,12 @@ export default async function FlashCardGalleryLayout({
     <Stack className="w-full">
       <AppBarContainer>
         <Link href={AppRoutes.flashCardRoutes.create} className="self-center">
-          <IconButton color="success">
+          <IconButton>
             <AddCircleRounded />
           </IconButton>
         </Link>
         <Link href={AppRoutes.tagRoutes.root} className="self-center">
-          <Button>{showTagsButtonText}</Button>
+          <Button variant="contained">{showTagsButtonText}</Button>
         </Link>
         <LearningActionButton tags={tags} />
       </AppBarContainer>
