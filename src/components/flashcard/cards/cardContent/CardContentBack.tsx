@@ -8,13 +8,15 @@ import { Divider } from "@mui/material";
 
 interface CardContentBackProps extends CardContentProps {
   show: boolean;
+  title: string;
 }
 
 export default function CardContentBack({
   flashCard,
+  title,
   show,
 }: CardContentBackProps) {
-  const answerTitle = "Answer";
+  const answerTitle = title;
   return (
     <Box
       className={`${determineCardContentCssPosition(

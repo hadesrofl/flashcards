@@ -2,10 +2,11 @@
 
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Stack, Typography, IconButton } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import FlashCard from "../FlashCard";
 import CardRotationState from "../../helper/CardRotationState";
 import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
+import { DictionaryContext } from "@dictionaries/helpers/dictionaryContext";
 
 interface CardCarouselProps {
   flashCards: FlashCardWithTags[];
@@ -17,7 +18,8 @@ export default function CardCarousel({ flashCards }: CardCarouselProps) {
     currentCard: flashCards[0],
     nextCard: flashCards.length > 1 ? flashCards[1] : undefined,
   });
-  const noCardsFoundText = "Card not found :(";
+  const dictionary = useContext(DictionaryContext);
+  const noCardsFoundText = dictionary.Flashcards.carousel.noCardsFound;
 
   const previousClick = (_event: React.MouseEvent) => {
     const newPreviousCardIndex = flashCards.findIndex(

@@ -1,9 +1,9 @@
 import { NextRequest } from "next/server";
 import handleServerError from "../../_internal/shared/errors/handleServerError";
-import IdParamProps from "@app/flashcards/_shared/props/IdParamProps";
 import dbContext from "@app/api/_internal/shared/db/dbContext";
 import StatusCodes from "@app/api/_internal/shared/StatusCodes";
 import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
+import IdParamProps from "@app/[lang]/flashcards/_shared/props/IdParamProps";
 
 export async function GET(_request: NextRequest, { params }: IdParamProps) {
   const { id } = params;

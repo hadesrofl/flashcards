@@ -2,7 +2,7 @@
 
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import MarkdownEditor from "../../lib/markdown/MarkdownEditor";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { Tag } from "@prisma/client";
 import AutoCompleteWithLabels from "../../lib/AutoCompleteWithLabels";
 import { useRouter } from "next/navigation";
@@ -10,6 +10,7 @@ import AppRoutes from "@app/appRoutes";
 import ApiRoutes from "@app/api/apiRoutes";
 import { CreateFlashCardWithTags } from "@domain/flashcard/factories/FlashCardWithTagsFactory";
 import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
+import { DictionaryContext } from "@dictionaries/helpers/dictionaryContext";
 
 interface FlashCardFormProps {
   tagOptions: Tag[];
@@ -27,9 +28,10 @@ export default function FlashCardForm({
   const [answer, setAnswer] = useState(flashCard?.answer ?? "");
   const [tags, setTags] = useState<Tag[]>(flashCard?.tags ?? []);
   const router = useRouter();
-  const questionTitle = "Question";
-  const answerTitle = "Answer";
-  const saveText = "Save";
+  const dictionary = useContext(DictionaryContext);
+  const questionTitle = dictionary.Flashcards.flashcardForm.questionTitle;
+  const answerTitle = dictionary.Flashcards.flashcardForm.answerTitle;
+  const saveText = dictionary.Flashcards.flashcardForm.save;
 
   const handleSubmit = async () => {
     const flashcard = CreateFlashCardWithTags(

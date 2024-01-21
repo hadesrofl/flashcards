@@ -7,12 +7,15 @@ import Grid from "@mui/material/Grid";
 
 interface ErrorPageProps {
   title: string;
+  subtitle: string;
   errorText: string;
 }
 
-export default function ErrorPage({ title, errorText }: ErrorPageProps) {
-  const subtitle = "You made Bobo sad.";
-
+export default function ErrorPage({
+  title,
+  subtitle,
+  errorText,
+}: ErrorPageProps) {
   return (
     <Grid container marginTop={5}>
       <Grid item xs={12} className="flex justify-center">
