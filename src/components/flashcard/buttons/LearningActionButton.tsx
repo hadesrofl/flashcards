@@ -1,19 +1,27 @@
 "use client";
 import { Tag } from "@prisma/client";
 import FilterTagSelect from "@components/tag/FilterTagSelect";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Stack from "@mui/material/Stack";
 import SplitButton from "@components/lib/navigation/buttons/SplitButton";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import AppRoutes from "@app/appRoutes";
 import getTagsFromPathname from "@app/_shared/tags/helpers/getTagsFromPathname";
 import { getTagsFromQuery } from "@app/_shared/tags/helpers/getTagsFromQuery";
+import { Dictionary } from "@dictionaries/helpers/getDictionaries";
+import { DictionaryContext } from "@dictionaries/helpers/dictionaryContext";
 
 interface LearningActionButtonProps {
   tags: Tag[];
 }
 
-const actions = {
+type Actions = {
+  shuffle: string;
+  showCollection: string;
+  showInSequence: string;
+};
+
+let actions: Actions = {
   shuffle: "Shuffle",
   showCollection: "Show Collection",
   showInSequence: "Show in Sequence",
@@ -42,6 +50,14 @@ function createNextRoute(selectedAction: string, selectedTags: Tag[]) {
   }
 }
 
+function translateActions(dictionary: Dictionary): Actions {
+  return {
+    shuffle: dictionary.LearningActionButton.actions.shuffle,
+    showCollection: dictionary.LearningActionButton.actions.showCollection,
+    showInSequence: dictionary.LearningActionButton.actions.showInSequence,
+  };
+}
+
 export default function LearningActionButton({
   tags,
 }: LearningActionButtonProps) {
@@ -49,6 +65,8 @@ export default function LearningActionButton({
   const pathname = usePathname();
   const query = useSearchParams();
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+  const dictionary = useContext(DictionaryContext);
+  actions = translateActions(dictionary);
   const options = Object.values(actions);
 
   useEffect(() => {

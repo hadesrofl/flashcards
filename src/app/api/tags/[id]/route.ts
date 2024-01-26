@@ -1,7 +1,7 @@
+import IdParamProps from "@app/[lang]/flashcards/_shared/props/IdParamProps";
 import StatusCodes from "@app/api/_internal/shared/StatusCodes";
 import dbContext from "@app/api/_internal/shared/db/dbContext";
 import handleServerError from "@app/api/_internal/shared/errors/handleServerError";
-import IdParamProps from "@app/flashcards/_shared/props/IdParamProps";
 import { Tag } from "@prisma/client";
 import { NextRequest } from "next/server";
 

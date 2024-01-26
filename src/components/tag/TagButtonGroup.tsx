@@ -3,7 +3,7 @@
 import { Edit } from "@mui/icons-material";
 import { Stack } from "@mui/material";
 import { Tag } from "@prisma/client";
-import React from "react";
+import React, { useContext } from "react";
 import ApiRoutes from "@app/api/apiRoutes";
 import DeleteDialogButton, {
   DeleteDialogButtonProps,
@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import InputDialogButton, {
   InputDialogButtonProps,
 } from "@components/lib/buttons/InputDialogButton";
+import { DictionaryContext } from "@dictionaries/helpers/dictionaryContext";
 
 interface TagButtonGroupProps {
   tag: Tag;
@@ -20,19 +21,32 @@ interface TagButtonGroupProps {
 
 export default function TagButtonGroup({ tag }: TagButtonGroupProps) {
   const router = useRouter();
+  const dictionary = useContext(DictionaryContext);
   const deleteButtonProps: Omit<DeleteDialogButtonProps, "icon" | "onClick"> = {
-    titleText: "Delete Tag",
-    contentText: `Are you sure, you want to delete the Tag: ${tag.name}`,
-    cancelButton: { label: "Cancel", color: "secondary" },
-    okButton: { label: "Delete", color: "error" },
+    titleText: dictionary.TagButtonGroup.deleteDialog.title,
+    contentText: `${dictionary.TagButtonGroup.deleteDialog.contextText} ${tag.name}`,
+    cancelButton: {
+      label: dictionary.TagButtonGroup.deleteDialog.buttons.cancelLabel,
+      color: "secondary",
+    },
+    okButton: {
+      label: dictionary.TagButtonGroup.deleteDialog.buttons.okLabel,
+      color: "error",
+    },
   };
 
   const inputButtonProps: Omit<InputDialogButtonProps, "icon" | "onOk"> = {
-    titleText: "Edit Tag",
-    contentText: `Please enter the new name for the tag: ${tag.name}`,
-    cancelButton: { label: "Cancel", color: "error" },
-    okButton: { label: "Save", color: "success" },
-    label: "Tag",
+    titleText: dictionary.TagButtonGroup.editDialog.title,
+    contentText: `${dictionary.TagButtonGroup.editDialog.contextText} ${tag.name}`,
+    cancelButton: {
+      label: dictionary.TagButtonGroup.editDialog.buttons.cancelLabel,
+      color: "error",
+    },
+    okButton: {
+      label: dictionary.TagButtonGroup.editDialog.buttons.okLabel,
+      color: "success",
+    },
+    label: dictionary.TagButtonGroup.editDialog.label,
   };
 
   const deleteTag = async () => {

@@ -1,0 +1,83 @@
+{
+  "AppBar": {
+    "ShowTags": "Tags anzeigen"
+  },
+  "TagButtonGroup": {
+    "deleteDialog": {
+      "title": "Tag löschen",
+      "contextText": "Bist du sicher, dass der folgende Tag gelöscht werden soll:",
+      "buttons": {
+        "cancelLabel": "Abbrechen",
+        "okLabel": "Löschen"
+      }
+    },
+    "editDialog": {
+      "title": "Tag bearbeiten",
+      "label": "Tag",
+      "contextText": "Bitte trage den neuen Namen für den Tag ein:",
+      "buttons": {
+        "cancelLabel": "Abbrechen",
+        "okLabel": "Speichern"
+      }
+    }
+  },
+  "NoTagDialog": {
+    "title": "Eine neue Karteikarte erstellen?",
+    "contextText": "Es scheint, dass keine Tags existieren. Du kannst ein Tag zusammen mit einer Karteikarte erstellen oder wenn du eine Karte bearbeitest. Willst du eine neue Karte erstellen?",
+    "buttons": {
+      "no": "Zurück zur Karteikartensammlung",
+      "yes": "Karteikarte erstellen"
+    }
+  },
+  "LearningActionButton": {
+    "actions": {
+      "shuffle": "Mischen",
+      "showCollection": "Zeige Sammlung",
+      "showInSequence": "Zeige Karte für Karte"
+    }
+  },
+  "Flashcards": {
+    "cardBack": {
+      "title": "Antwort"
+    },
+    "carousel": {
+      "noCardsFound": "Karte nicht gefunden :("
+    },
+    "deleteDialog": {
+      "title": "Karteikarte löschen",
+      "contextText": "Bist du sicher, dass du die folgende Karteikarte löschen möchtest?\n\nFrage:",
+      "buttons": {
+        "cancelLabel": "Abbrechen",
+        "okLabel": "Löschen"
+      }
+    },
+    "noFlashCardDialog": {
+      "title": "Eine neue Karteikarte erstellen?",
+      "contextText": "Es scheint, dass keine Karteikarten existieren. Möchtest du eine neue anlegen?",
+      "buttons": {
+        "no": "Nein",
+        "yes": "Karteikarte erstellen"
+      }
+    },
+    "flashcardForm": {
+      "questionTitle": "Frage",
+      "answerTitle": "Antwort",
+      "save": "Speichern"
+    }
+  },
+  "Errors": {
+    "pages": {
+      "notFound": {
+        "selectTagFirst": "Wähle bitte zuerst einen Tag aus.",
+        "couldNotFindCard": "Er konnte die Karte nicht finden.",
+        "boboSad": "Du hast Bobo traurig gemacht."
+      },
+      "generic": {
+        "text": "Etwas ist schiefgelaufen",
+        "buttons": {
+         "tryAgain": "Versuche es erneut" 
+        }
+      }
+    }
+  }
+}

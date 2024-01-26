@@ -71,7 +71,7 @@ export default function SplitButton({
           {options[selectedIndex]}
         </Button>
         <Button
-          size="small"
+          size="large"
           aria-controls={open ? "split-button-menu" : undefined}
           aria-expanded={open ? "true" : undefined}
           aria-haspopup="menu"

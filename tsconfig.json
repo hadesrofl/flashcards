@@ -23,6 +23,7 @@
       "@app/*": ["./src/app/*"],
       "@components/*": ["./src/components/*"],
       "@domain/*": ["./src/domain/*"],
+      "@dictionaries/*": ["./src/dictionaries/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

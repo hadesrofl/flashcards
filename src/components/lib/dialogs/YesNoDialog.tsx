@@ -10,9 +10,9 @@ interface YesNoDialogProps
     ActionDialogProps,
     "cancelButton" | "okButton" | "onCancel" | "onOk"
   > {
-  noButton?: DialogButtonProps;
+  noButton: DialogButtonProps;
   onNo: () => void;
-  yesButton?: DialogButtonProps;
+  yesButton: DialogButtonProps;
   onYes: () => void;
 }
 
@@ -20,9 +20,9 @@ export default function YesNoDialog({
   titleText,
   contentText,
   borderColor,
-  noButton = { label: "No", color: "error" },
+  noButton,
   onNo,
-  yesButton = { label: "Yes", color: "primary" },
+  yesButton,
   onYes,
   open,
 }: YesNoDialogProps) {

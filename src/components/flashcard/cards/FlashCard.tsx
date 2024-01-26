@@ -14,7 +14,7 @@ import {
   Button,
   IconButton,
 } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CardContentFront from "./cardContent/CardContentFront";
 import { rotationClass } from "../constants";
 import CardContentBack from "./cardContent/CardContentBack";
@@ -25,6 +25,7 @@ import Delete from "@mui/icons-material/Delete";
 import { useRouter } from "next/navigation";
 import { DialogButtonProps } from "@components/lib/dialogs/ActionDialog";
 import { FlashCardWithTags } from "@domain/flashcard/models/flashcard";
+import { DictionaryContext } from "@dictionaries/helpers/dictionaryContext";
 
 interface FlashCardProps {
   flashcard: FlashCardWithTags;
@@ -33,14 +34,17 @@ interface FlashCardProps {
 export default function FlashCard({ flashcard }: FlashCardProps) {
   const [showAnswer, setShowAnswer] = useState(false);
   const router = useRouter();
-
-  const titleText = "Delete Flashcard";
-  const contentText = `Are you sure, you want to delete the following flashcard?\n\nQuestion: ${flashcard.question}`;
+  const dictionary = useContext(DictionaryContext);
+  const titleText = dictionary.Flashcards.deleteDialog.title;
+  const contentText = `${dictionary.Flashcards.deleteDialog.contextText} ${flashcard.question}`;
   const cancelButton: DialogButtonProps = {
-    label: "Cancel",
+    label: dictionary.Flashcards.deleteDialog.buttons.cancelLabel,
     color: "secondary",
   };
-  const okButton: DialogButtonProps = { label: "Delete", color: "error" };
+  const okButton: DialogButtonProps = {
+    label: dictionary.Flashcards.deleteDialog.buttons.okLabel,
+    color: "error",
+  };
 
   const changeShowAnswer = () => {
     setShowAnswer(!showAnswer);
@@ -83,7 +87,11 @@ export default function FlashCard({ flashcard }: FlashCardProps) {
           }}
         >
           <CardContentFront flashCard={flashcard} />
-          <CardContentBack flashCard={flashcard} show={showAnswer} />
+          <CardContentBack
+            flashCard={flashcard}
+            show={showAnswer}
+            title={dictionary.Flashcards.cardBack.title}
+          />
         </CardContent>
         <CardActions className="justify-center">
           <Stack

@@ -1,0 +1,83 @@
+{
+  "AppBar": {
+    "ShowTags": "Show Tags"
+  },
+  "TagButtonGroup": {
+    "deleteDialog": {
+      "title": "Delete Tag",
+      "contextText": "Are you sure, you want to delete the tag:",
+      "buttons": {
+        "cancelLabel": "Cancel",
+        "okLabel": "Delete"
+      }
+    },
+    "editDialog": {
+      "title": "Edit Tag",
+      "label": "Tag",
+      "contextText": "Please enter the new name for the tag:",
+      "buttons": {
+        "cancelLabel": "Cancel",
+        "okLabel": "Save"
+      }
+    }
+  },
+  "NoTagDialog": {
+    "title": "Create a new Flashcard?",
+    "contextText": "It seems there are no tags. You can create one together with a new card or by editing an existing one. Do you want to create a new card?",
+    "buttons": {
+      "no": "Return to Flashcard Collection",
+      "yes": "Create Flashcard"
+    }
+  },
+  "LearningActionButton": {
+    "actions": {
+      "shuffle": "Shuffle",
+      "showCollection": "Show Collection",
+      "showInSequence": "Show in Sequence"
+    }
+  },
+  "Flashcards": {
+    "cardBack": {
+      "title": "Answer"
+    },
+    "carousel": {
+      "noCardsFound": "Card not found :("
+    },
+    "deleteDialog": {
+      "title": "Delete Flashcard",
+      "contextText": "Are you sure, you want to delete the following flashcard?\n\nQuestion:",
+      "buttons": {
+        "cancelLabel": "Cancel",
+        "okLabel": "Delete"
+      }
+    },
+    "noFlashCardDialog": {
+      "title": "Create new Flashcard?",
+      "contextText": "It seems there are no flashcards. Do you want to get started by creating one?",
+      "buttons": {
+        "no": "No",
+        "yes": "Create Flashcard"
+      }
+    },
+    "flashcardForm": {
+      "questionTitle": "Question",
+      "answerTitle": "Answer",
+      "save": "Save"
+    }
+  },
+  "Errors": {
+    "pages": {
+      "notFound": {
+        "selectTagFirst": "Please select a tag first.",
+        "couldNotFindCard": "He couldn't find the card.",
+        "boboSad": "You made Bobo sad."
+      },
+      "generic": {
+        "text": "Something went wrong",
+        "buttons": {
+          "tryAgain": "Try again"
+        }
+      }
+    }
+  }
+}
