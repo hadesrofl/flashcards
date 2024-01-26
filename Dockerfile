@@ -11,12 +11,13 @@ RUN export NODE_ENV=production
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
-
-COPY schema.prisma ./schema.prisma
-COPY migrations ./migrations
+COPY prisma ./prisma
 
 # Install build dependencies
 RUN npm install
+RUN npm run db:schema:build && npm run db:client:generate
+
+COPY migrations ./migrations
 
 COPY . .
 
