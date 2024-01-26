@@ -57,5 +57,7 @@ jobs:
           cache: "npm"
           cache-dependency-path: "package-lock.json"
       - run: npm ci
+      - run: npm run db:schema:build
+      - run: npm run db:client:generate
       - run: npm run db:migrate:prod
       - run: npm run build

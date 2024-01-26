@@ -1,0 +1,11 @@
+import { Tag } from "./tag"
+
+model Flashcard {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
+  question     String
+  questionText String
+  answer       String
+  tags         Tag[]
+}
