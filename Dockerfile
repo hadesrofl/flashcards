@@ -26,6 +26,8 @@ RUN npx next experimental-compile
 ## RUNNER
 FROM base
 
+RUN apk add jq
+
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/migrations/ ./migrations
