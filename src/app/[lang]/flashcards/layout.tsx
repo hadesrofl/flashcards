@@ -29,7 +29,7 @@ export default async function FlashCardGalleryLayout({
   ];
 
   return (
-    <Stack className="w-full">
+    <Stack className="w-full" spacing={2}>
       <AppBarContainer
         mobileMenu={
           <Grid container display={{ sm: "flex", md: "none" }}>
