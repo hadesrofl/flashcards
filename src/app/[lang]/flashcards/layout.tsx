@@ -1,7 +1,7 @@
 import dbContext from "@app/api/_internal/shared/db/dbContext";
 import AppRoutes from "@app/appRoutes";
 import { CommonLayoutProps } from "@app/[lang]/layout";
-import LearningActionButton from "@components/flashcard/buttons/LearningActionButton";
+import LearningActionButton from "@components/flashcard/buttons/LearningActionButton/LearningActionButton";
 import CenteredBox from "@components/lib/CenteredBox";
 import AppBarContainer from "@components/lib/navigation/AppBarContainer";
 import MobileMenu, {

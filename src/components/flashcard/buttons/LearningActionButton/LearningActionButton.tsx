@@ -1,5 +1,5 @@
 "use client";
-import { Tag } from "@prisma/client";
+import { Tag } from "@prisma/client/edge";
 import FilterTagSelect from "@components/tag/FilterTagSelect";
 import { useContext, useEffect, useState } from "react";
 import Stack from "@mui/material/Stack";
