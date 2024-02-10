@@ -23,9 +23,10 @@
       "@app/*": ["./src/app/*"],
       "@components/*": ["./src/components/*"],
       "@domain/*": ["./src/domain/*"],
-      "@dictionaries/*": ["./src/dictionaries/*"]
+      "@dictionaries/*": ["./src/dictionaries/*"],
+      "@tests/*": ["./src/tests/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/__mocks__/react-markdown.js", "src/tests/setupTests.js"],
   "exclude": ["node_modules"]
 }

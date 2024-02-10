@@ -14,6 +14,7 @@ import InputDialogButton, {
   InputDialogButtonProps,
 } from "@components/lib/buttons/InputDialogButton";
 import { DictionaryContext } from "@dictionaries/helpers/dictionaryContext";
+import TestIds from "@tests/testIds";
 
 interface TagButtonGroupProps {
   tag: Tag;
@@ -53,7 +54,7 @@ export default function TagButtonGroup({ tag }: TagButtonGroupProps) {
     if ("id" in tag) {
       try {
         await fetch(ApiRoutes.tags.deleteTagRoute(tag.id), {
-          method: "Delete",
+          method: "DELETE",
         });
         router.refresh();
       } catch (error) {
@@ -76,8 +77,13 @@ export default function TagButtonGroup({ tag }: TagButtonGroupProps) {
   };
 
   return (
-    <Stack direction="row" spacing={2}>
+    <Stack
+      direction="row"
+      spacing={2}
+      data-testid={TestIds.TagButtonGroup.Root(tag.name)}
+    >
       <InputDialogButton
+        data-testid={TestIds.TagButtonGroup.InputDialogButton(tag.name)}
         color="primary"
         value={tag.name}
         label={inputButtonProps.label}
@@ -89,6 +95,7 @@ export default function TagButtonGroup({ tag }: TagButtonGroupProps) {
         okButton={inputButtonProps.okButton}
       />
       <DeleteDialogButton
+        data-testid={TestIds.TagButtonGroup.DeleteDialogButton(tag.name)}
         color="error"
         onClick={deleteTag}
         icon={<Delete />}

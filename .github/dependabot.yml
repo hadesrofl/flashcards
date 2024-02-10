@@ -35,3 +35,11 @@ updates:
           - "prisma*"
         update-types:
           - "patch"
+      tests:
+        patterns:
+          - "jest*"
+          - "@types/jest*"
+          - "@testing*"
+          - "node-mocks-http"
+        update-types:
+          - "patch"

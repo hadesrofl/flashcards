@@ -9,7 +9,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { Tag } from "@prisma/client";
+import { Tag } from "@prisma/client/edge";
+import TestIds from "@tests/testIds";
 import { useEffect, useState } from "react";
 
 function convertSelectedTags(value: string | Tag[], selectableTags: Tag[]) {
@@ -95,6 +96,7 @@ export default function FilterTagSelect({
         className="h-full"
         labelId="filter-tag-select-label"
         id="filter-tag-select"
+        data-testid={TestIds.LearningActionButton.TagSelectBox}
         multiple
         value={selectedTags}
         onChange={handleChange}
@@ -120,14 +122,22 @@ export default function FilterTagSelect({
           const found = selectedTags.find((t) => t.id === tag.id);
 
           return found !== undefined ? (
-            <MenuItem key={crypto.randomUUID()} value={tag.name}>
+            <MenuItem
+              key={crypto.randomUUID()}
+              value={tag.name}
+              data-testid={TestIds.LearningActionButton.TagMenuItem(tag.name)}
+            >
               {tag.name}
               <ListItemIcon>
                 <CheckCircle />
               </ListItemIcon>
             </MenuItem>
           ) : (
-            <MenuItem key={crypto.randomUUID()} value={tag.name}>
+            <MenuItem
+              key={crypto.randomUUID()}
+              value={tag.name}
+              data-testid={TestIds.LearningActionButton.TagMenuItem(tag.name)}
+            >
               {tag.name}
             </MenuItem>
           );

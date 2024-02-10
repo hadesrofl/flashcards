@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
+import TestIds from "@tests/testIds";
 import { useRef, useState } from "react";
 
 interface SplitButtonProps {
@@ -32,16 +33,13 @@ export default function SplitButton({
     if (onClick !== undefined) onClick(options[selectedIndex]);
   };
 
-  const handleSelection = () => {
-    if (onSelect !== undefined) onSelect(options[selectedIndex]);
-  };
-
   const handleMenuItemClick = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number
   ) => {
     setSelectedIndex(index);
     setOpen(false);
+    if (onSelect !== undefined) onSelect(options[index]);
   };
 
   const handleToggle = () => {
@@ -75,6 +73,7 @@ export default function SplitButton({
           aria-controls={open ? "split-button-menu" : undefined}
           aria-expanded={open ? "true" : undefined}
           aria-haspopup="menu"
+          data-testid={TestIds.LearningActionButton.SplitButton.Toggle}
           onClick={handleToggle}
         >
           <ArrowDropDown />
@@ -100,7 +99,11 @@ export default function SplitButton({
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <MenuList id="split-button-menu" autoFocusItem>
+                <MenuList
+                  id="split-button-menu"
+                  data-testid={TestIds.LearningActionButton.SplitButton.Menu}
+                  autoFocusItem
+                >
                   {options.map((option, index) => (
                     <MenuItem
                       key={option}

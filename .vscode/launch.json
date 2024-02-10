@@ -1,6 +1,7 @@
 {
   "version": "0.2.0",
   "configurations": [
+
     {
       "name": "Next.js: debug server-side",
       "type": "node-terminal",
@@ -23,6 +24,13 @@
         "uriFormat": "%s",
         "action": "debugWithChrome"
       }
+    },
+    {
+      "type": "node-terminal",
+      "name": "Run tests",
+      "request": "launch",
+      "command": "npm run test:watch",
+      "cwd": "${workspaceFolder}"
     }
   ]
 }

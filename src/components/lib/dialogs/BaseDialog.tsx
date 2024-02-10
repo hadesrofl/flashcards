@@ -1,6 +1,5 @@
 "use client";
-import { Box } from "@mui/material";
-import Dialog from "@mui/material/Dialog/Dialog";
+import { Box, Dialog } from "@mui/material";
 import { ReactNode } from "react";
 
 export interface BaseDialogProps {

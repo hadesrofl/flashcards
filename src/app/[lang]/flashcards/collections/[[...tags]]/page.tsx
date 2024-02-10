@@ -2,7 +2,7 @@ import flashCardsByTagsQuery from "@app/api/_internal/flashcards/db/queries/flas
 import dbContext from "@app/api/_internal/shared/db/dbContext";
 import TagParamProps from "@app/[lang]/flashcards/_shared/props/TagParamProps";
 import FlashCardGallery from "@components/flashcard/FlashCardGallery";
-import NoFlashCardDialog from "@components/flashcard/dialogs/NoFlashCardDialog";
+import NoFlashCardDialog from "@components/flashcard/dialogs/NoFlashCard/NoFlashCardDialog";
 
 export default async function FlashCardGalleryPage({ params }: TagParamProps) {
   const { tags } = params;
